@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-//import 'package:recycler/screens/2ndscreen.dart';
+import 'package:recycler/screens/2ndscreen.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -156,9 +156,8 @@ class _HomeState extends State<Home> {
                     style: TextStyle(color: Colors.white),
                   ),
                   onPressed: () => {
-                    setState(() {
-                      _follow();
-                    })
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Secondscreen()))
                   },
                 ),
               ),

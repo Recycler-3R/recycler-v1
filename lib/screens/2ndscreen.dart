@@ -32,7 +32,7 @@ class _SecondscreenState extends State<Secondscreen> {
                     style: TextStyle(
                       fontSize: 45,
                       fontWeight: FontWeight.bold,
-                      fontFamily: 'Times New Roman',
+                      fontFamily: 'Cooper Black',
                       color: Colors.black,
                     ),
                   ),
@@ -45,7 +45,7 @@ class _SecondscreenState extends State<Secondscreen> {
                   style: TextStyle(
                     fontSize: 40,
                     fontWeight: FontWeight.bold,
-                    fontFamily: 'Times New Roman',
+                    fontFamily: 'Cooper Black',
                     color: Colors.black,
                   ),
                 ),

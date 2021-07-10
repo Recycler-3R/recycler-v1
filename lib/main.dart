@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:recycler/screens/home.dart';
-import 'package:recycler/screens/2ndscreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Secondscreen(),
+      home: Home(),
     );
   }
 }
