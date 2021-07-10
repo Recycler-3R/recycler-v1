@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recycler/screens/2ndscreen.dart';
+import 'package:recycler/screens/loginScreen.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -158,6 +159,36 @@ class _HomeState extends State<Home> {
                   onPressed: () => {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => Secondscreen()))
+                  },
+                ),
+              ),
+              SizedBox(height: 20),
+              Container(
+                height: 50,
+                width: 200,
+                decoration: new BoxDecoration(
+                    color: const Color(0xFF30D046),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.green.shade300,
+                        spreadRadius: 3,
+                        blurRadius: 2,
+                        offset: Offset(0, 2), // changes position of shadow
+                      ),
+                    ],
+                    borderRadius: BorderRadius.all(Radius.circular(30.0))),
+                child: TextButton(
+                  style: TextButton.styleFrom(
+                    textStyle: const TextStyle(
+                        fontSize: 16, fontFamily: 'Public Sans'),
+                  ),
+                  child: const Text(
+                    'Auth',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  onPressed: () => {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => AuthApp()))
                   },
                 ),
               ),
