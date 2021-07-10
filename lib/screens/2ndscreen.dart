@@ -23,58 +23,40 @@ class _SecondscreenState extends State<Secondscreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              SizedBox(height: 550),
+              SizedBox(height: 300),
               Container(
-                height: 50,
-                width: 200,
-                decoration: new BoxDecoration(
-                    color: const Color(0xFF9378FF),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.purple.shade200,
-                        spreadRadius: 3,
-                        blurRadius: 10,
-                        offset: Offset(0, 2), // changes position of shadow
-                      ),
-                    ],
-                    borderRadius: BorderRadius.all(Radius.circular(30.0))),
-                child: TextButton(
-                  style: TextButton.styleFrom(
-                    textStyle: const TextStyle(
-                        fontSize: 16, fontFamily: 'Public Sans'),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                  child: Text(
+                    'Hi!',
+                    style: TextStyle(
+                      fontSize: 45,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Times New Roman',
+                      color: Colors.black,
+                    ),
                   ),
-                  child: const Text(
-                    'FOLLOW US',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  onPressed: () => {setState(() {})},
                 ),
               ),
-              SizedBox(height: 20),
-              Container(
-                height: 50,
-                width: 200,
-                decoration: new BoxDecoration(
-                    color: const Color(0xFF30D046),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.green.shade300,
-                        spreadRadius: 3,
-                        blurRadius: 2,
-                        offset: Offset(0, 2), // changes position of shadow
-                      ),
-                    ],
-                    borderRadius: BorderRadius.all(Radius.circular(30.0))),
-                child: TextButton(
-                  style: TextButton.styleFrom(
-                    textStyle: const TextStyle(
-                        fontSize: 16, fontFamily: 'Public Sans'),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+                child: Text(
+                  'My name is',
+                  style: TextStyle(
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Times New Roman',
+                    color: Colors.black,
                   ),
-                  child: const Text(
-                    'PLAY NOW',
-                    style: TextStyle(color: Colors.white),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                    border: UnderlineInputBorder(),
+                    labelText: 'Enter your name',
                   ),
-                  onPressed: () => {setState(() {})},
                 ),
               ),
             ],
