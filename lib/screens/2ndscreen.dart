@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recycler/screens/3rdscreen.dart';
 import 'package:recycler/screens/home.dart';
 
 class Secondscreen extends StatefulWidget {
@@ -41,7 +42,7 @@ class _SecondscreenState extends State<Secondscreen> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+                  padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
                   child: Text(
                     'My name is',
                     style: TextStyle(
@@ -53,7 +54,7 @@ class _SecondscreenState extends State<Secondscreen> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                  padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
                   child: TextFormField(
                     decoration: InputDecoration(
                       border: UnderlineInputBorder(),
@@ -62,7 +63,7 @@ class _SecondscreenState extends State<Secondscreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 100,
+                  height: 50,
                 ),
                 Container(
                   height: 50,
@@ -92,6 +93,43 @@ class _SecondscreenState extends State<Secondscreen> {
                           MaterialPageRoute(builder: (context) => Home()))
                     },
                   ),
+                ),
+                SizedBox(
+                  height: 50,
+                ),
+                Container(
+                  height: 50,
+                  width: 200,
+                  decoration: new BoxDecoration(
+                      color: const Color(0xFF30D046),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.green.shade300,
+                          spreadRadius: 3,
+                          blurRadius: 10,
+                          offset: Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                      borderRadius: BorderRadius.all(Radius.circular(30.0))),
+                  child: TextButton(
+                    style: TextButton.styleFrom(
+                      textStyle: const TextStyle(
+                          fontSize: 16, fontFamily: 'Public Sans'),
+                    ),
+                    child: const Text(
+                      'Continue',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    onPressed: () => {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Thirdscreen()))
+                    },
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
                 ),
               ],
             )),
