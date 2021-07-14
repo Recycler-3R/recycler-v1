@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:slider_button/slider_button.dart';
 
 class ThreeR extends StatefulWidget {
   const ThreeR({Key? key}) : super(key: key);
@@ -31,29 +30,6 @@ class _ThreeRState extends State<ThreeR> {
                 ),
               ),
             )),
-            Padding(
-                padding: EdgeInsets.all(16.0),
-                child: SliderButton(
-                  action: () {
-                    ///Do something here
-                    Navigator.of(context).pop();
-                  },
-                  label: Text(
-                    "REUSE",
-                    style: TextStyle(
-                        color: Colors.green.shade700,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 17),
-                  ),
-                  icon: Text(
-                    "O",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 44,
-                    ),
-                  ),
-                )),
           ]),
     );
   }
