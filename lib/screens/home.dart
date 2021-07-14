@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recycler/screens/2ndscreen.dart';
+import 'package:recycler/screens/inputname.dart';
 import 'package:recycler/screens/loginScreen.dart';
 
 class Home extends StatefulWidget {
@@ -158,7 +158,7 @@ class _HomeState extends State<Home> {
                   ),
                   onPressed: () => {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Secondscreen()))
+                        MaterialPageRoute(builder: (context) => InputName()))
                   },
                 ),
               ),

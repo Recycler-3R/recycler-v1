@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:recycler/screens/3rdscreen.dart';
 import 'package:recycler/screens/home.dart';
+import 'package:recycler/screens/camp.dart';
 
-class Secondscreen extends StatefulWidget {
+class InputName extends StatefulWidget {
   @override
-  _SecondscreenState createState() => _SecondscreenState();
+  _InputNameState createState() => _InputNameState();
 }
 
-class _SecondscreenState extends State<Secondscreen> {
+class _InputNameState extends State<InputName> {
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
@@ -121,10 +121,8 @@ class _SecondscreenState extends State<Secondscreen> {
                       style: TextStyle(color: Colors.white),
                     ),
                     onPressed: () => {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => Thirdscreen()))
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => CampSite()))
                     },
                   ),
                 ),
