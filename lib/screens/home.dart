@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recycler/screens/inputname.dart';
 import 'package:recycler/screens/loginScreen.dart';
-import 'package:recycler/screens/sandbox.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -189,7 +188,7 @@ class _HomeState extends State<Home> {
                   ),
                   onPressed: () => {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Sandbox()))
+                        MaterialPageRoute(builder: (context) => AuthApp()))
                   },
                 ),
               ),

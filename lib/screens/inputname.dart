@@ -35,7 +35,7 @@ class _InputNameState extends State<InputName> {
                       style: TextStyle(
                         fontSize: 45,
                         fontWeight: FontWeight.bold,
-                        fontFamily: 'Cooper Black',
+                        fontFamily: 'CooperBlack',
                         color: Colors.black,
                       ),
                     ),
@@ -48,7 +48,7 @@ class _InputNameState extends State<InputName> {
                     style: TextStyle(
                       fontSize: 40,
                       fontWeight: FontWeight.bold,
-                      fontFamily: 'Cooper Black',
+                      fontFamily: 'CooperBlack',
                       color: Colors.black,
                     ),
                   ),
