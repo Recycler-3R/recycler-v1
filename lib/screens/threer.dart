@@ -14,6 +14,8 @@ class _ThreeRState extends State<ThreeR> {
 
   @override
   Widget build(BuildContext context) {
+    final item = 'coffeecup';
+
     return MaterialApp(
       theme: ThemeData(scaffoldBackgroundColor: Color(0xFFFFFFFF)),
       home: Scaffold(
@@ -54,15 +56,27 @@ class _ThreeRState extends State<ThreeR> {
                 SizedBox(
                   height: 25,
                 ),
-                RSlideButton(buttonName: 'educe'),
+                RSlideButton(
+                  item: item,
+                  buttonName: 'educe',
+                  isSuccess: true,
+                ),
                 SizedBox(
                   height: 15,
                 ),
-                RSlideButton(buttonName: 'euse'),
+                RSlideButton(
+                  item: item,
+                  buttonName: 'euse',
+                  isSuccess: false,
+                ),
                 SizedBox(
                   height: 15,
                 ),
-                RSlideButton(buttonName: 'ecycle'),
+                RSlideButton(
+                  item: item,
+                  buttonName: 'ecycle',
+                  isSuccess: false,
+                ),
               ],
             ),
           ),
