@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recycler/Minigame_Reduce/Reduce_Game.dart';
 import 'package:recycler/screens/inputname.dart';
 import 'package:recycler/screens/loginScreen.dart';
 
@@ -187,8 +188,9 @@ class _HomeState extends State<Home> {
                     style: TextStyle(color: Colors.white),
                   ),
                   onPressed: () => {
+                    // for (int i = 0; i < 10; i++) {setColorGrid(i)},
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => AuthApp()))
+                        MaterialPageRoute(builder: (context) => Reduce()))
                   },
                 ),
               ),

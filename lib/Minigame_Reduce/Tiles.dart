@@ -1,21 +1,35 @@
 import 'package:flutter/material.dart';
 
-class Tile extends StatelessWidget {
-  final color;
+class Tile extends StatefulWidget {
+  var color;
+  var onTap;
 
-  const Tile({
+  Tile({
     Key? key,
-    required Color? this.color,
+    required Color this.color,
+    this.onTap,
   }) : super(key: key);
 
   @override
+  _TileState createState() => _TileState();
+}
+
+class _TileState extends State<Tile> {
+  @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
-        child: Container(
-          color: color,
+    return Material(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: Ink(
+            child: InkWell(
+              onTap: widget.onTap,
+              child: Container(
+                color: widget.color,
+              ),
+            ),
+          ),
         ),
       ),
     );
