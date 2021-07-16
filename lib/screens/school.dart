@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recycler/screens/sandbox.dart';
+import 'package:recycler/screens/threer.dart';
 
 class School extends StatefulWidget {
   const School({Key? key}) : super(key: key);
@@ -21,7 +21,7 @@ class _SchoolState extends State<School> {
           IconButton(
               onPressed: () => {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Sandbox()))
+                        MaterialPageRoute(builder: (context) => ThreeR()))
                   },
               icon: Icon(Icons.arrow_forward_ios))
         ],

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:recycler/screens/threer/rslidebutton.dart';
 
-void main() => runApp(Sandbox());
+void main() => runApp(ThreeR());
 
-class Sandbox extends StatefulWidget {
+class ThreeR extends StatefulWidget {
   @override
-  _SandboxState createState() => _SandboxState();
+  _ThreeRState createState() => _ThreeRState();
 }
 
-class _SandboxState extends State<Sandbox> {
+class _ThreeRState extends State<ThreeR> {
   // Define the various properties with default values. Update these properties
   // when the user taps a FloatingActionButton.
 
