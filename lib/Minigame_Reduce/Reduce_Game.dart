@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:recycler/Minigame_Reduce/Tiles.dart';
+import 'package:recycler/screens/home.dart';
 
 // int rand() {
 //   var rand = new Random();
@@ -20,6 +21,7 @@ class _ReduceState extends State<Reduce> {
   var rand = new Random();
   var ongoingGame = true;
   int chosenColorActive = 0;
+  late Color chosenColorToPop;
 
   List<Color> colorPool = [
     Colors.deepPurple,
@@ -49,6 +51,10 @@ class _ReduceState extends State<Reduce> {
     colorGrid.update(index, (value) => colorPool[rand.nextInt(3)]);
   }
 
+  setColorPopped(int index) {
+    colorGrid.update(index, (value) => Colors.black);
+  }
+
   getColorGrid(int index) {
     if (colorGrid.containsKey(index)) {
       return colorGrid[index];
@@ -62,6 +68,11 @@ class _ReduceState extends State<Reduce> {
         chosenColorActive = 0;
         checkBoard(board, chosen);
 
+        if (!ongoingGame) {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => Home()));
+        }
+
         // setState(() {
 
         // });
@@ -69,12 +80,16 @@ class _ReduceState extends State<Reduce> {
     );
   }
 
-  void spawner(int index) {
+  void spawner(int index, Map board, Color chosen) {
+    checkBoard(board, chosen);
+    setColorPopped(index);
     Timer.periodic(Duration(milliseconds: 1200), (timer) {
       //add loading/growing animation
-      setState(() {
-        setColorGrid(index);
-      });
+      if (getColorGrid(index) == Colors.black) {
+        setState(() {
+          setColorGrid(index);
+        });
+      }
     });
   }
 
@@ -93,6 +108,7 @@ class _ReduceState extends State<Reduce> {
 
   @override
   void initState() {
+    chosenColorToPop = colorPool[rand.nextInt(3)];
     for (int i = 0; i < 12; i++) {
       setColorGrid(i);
       //print('Color of Tile[' + i.toString() + ']: ' + getColorGrid(i));
@@ -119,16 +135,20 @@ class _ReduceState extends State<Reduce> {
                           color: getColorGrid(index),
                           onTap: () {
                             setState(() {
-                              if (ongoingGame) {
-                                setColorGrid(index);
-                                checkBoard(colorGrid, Colors.deepPurple);
-                                if (ongoingGame == false) {
-                                  Navigator.pop(context);
-                                }
-                              } else {
-                                Navigator.pop(context);
-                              }
+                              // checkBoard(colorGrid, chosenColorToPop);
+                              spawner(index, colorGrid, Colors.deepPurple);
                             });
+                            // setState(() {
+                            //   if (ongoingGame) {
+                            //     setColorGrid(index);
+                            //     checkBoard(colorGrid, Colors.deepPurple);
+                            //     if (ongoingGame == false) {
+                            //       Navigator.pop(context);
+                            //     }
+                            //   } else {
+                            //     Navigator.pop(context);
+                            //   }
+                            // });
                           });
                     }),
               ),
