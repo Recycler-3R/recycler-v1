@@ -101,10 +101,10 @@ class _HomeState extends State<Home> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              SizedBox(height: 550),
+              SizedBox(height: height * 0.68),
               Container(
-                height: 50,
-                width: 200,
+                height: height * 0.075,
+                width: width * 0.55,
                 decoration: new BoxDecoration(
                     color: const Color(0xFF9378FF),
                     boxShadow: [
@@ -132,10 +132,10 @@ class _HomeState extends State<Home> {
                   },
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: height * 0.03),
               Container(
-                height: 50,
-                width: 200,
+                height: height * 0.075,
+                width: width * 0.55,
                 decoration: new BoxDecoration(
                     color: const Color(0xFF30D046),
                     boxShadow: [
@@ -162,10 +162,10 @@ class _HomeState extends State<Home> {
                   },
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: height * 0.03),
               Container(
-                height: 50,
-                width: 200,
+                height: height * 0.075,
+                width: width * 0.55,
                 decoration: new BoxDecoration(
                     color: const Color(0xFF30D046),
                     boxShadow: [

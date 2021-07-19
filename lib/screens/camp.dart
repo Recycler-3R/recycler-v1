@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recycler/screens/beach.dart';
+import 'package:recycler/screens/threer.dart';
+import 'package:recycler/strings/dialogs.dart';
 
 class CampSite extends StatefulWidget {
   const CampSite({Key? key}) : super(key: key);
@@ -37,6 +39,7 @@ class MyStatelessWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String item = resultDialogs['coffeecup'].toString();
     final PageController controller = PageController(initialPage: 0);
     final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
@@ -56,6 +59,40 @@ class MyStatelessWidget extends StatelessWidget {
                   image: AssetImage("images/camp1.png"),
                   fit: BoxFit.fitWidth,
                   alignment: Alignment.center),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                InkWell(
+                  onTap: () => {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => ThreeR()))
+                  },
+                  child: Container(
+                    margin: EdgeInsets.fromLTRB(20, 50, 10, 10),
+                    height: height * 0.05,
+                    width: width * 0.05,
+                    child: Hero(
+                      tag: 'item-img' + item,
+                      child: Image.asset("images/sampleitem.png"),
+                    ),
+                  ),
+                ),
+                InkWell(
+                  onTap: () => {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => ThreeR()))
+                  },
+                  child: Container(
+                    height: height * 0.1,
+                    width: width * 0.1,
+                    child: Hero(
+                      tag: '',
+                      child: Image.asset("images/soapbottle.png"),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),

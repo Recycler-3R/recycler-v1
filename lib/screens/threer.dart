@@ -25,15 +25,13 @@ class _ThreeRState extends State<ThreeR> {
             child: Column(
               children: [
                 Spacer(),
-                Container(
-                  height: 250,
-                  width: 250,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25),
-                      image: DecorationImage(
-                        image: AssetImage("images/sampleitem.png"),
-                        fit: BoxFit.fitHeight,
-                      ),
+                ClipRRect(
+                  borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                  child: Container(
+                    height: 250,
+                    width: 250,
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
                       gradient: LinearGradient(
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
@@ -49,7 +47,13 @@ class _ThreeRState extends State<ThreeR> {
                           blurRadius: 4,
                           offset: Offset(0, 1), // changes position of shadow
                         ),
-                      ]),
+                      ],
+                    ),
+                    child: Hero(
+                      tag: 'item-img',
+                      child: Image.asset("images/sampleitem.png"),
+                    ),
+                  ),
                 ),
                 Spacer(),
                 RSlideButton(
