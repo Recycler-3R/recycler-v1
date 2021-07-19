@@ -15,7 +15,7 @@ class SuccessR extends StatelessWidget {
   Widget build(BuildContext context) {
     String successMessage =
         resultDialogs['ps_' + finalR + 'correct'].toString();
-
+    String item = '';
     final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
     return SafeArea(
@@ -108,7 +108,7 @@ class SuccessR extends StatelessWidget {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => ThreeR()));
+                                    builder: (context) => ThreeR(item: item)));
                           },
                           child: Container(
                             height: 20,

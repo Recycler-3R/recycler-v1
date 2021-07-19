@@ -12,7 +12,7 @@ class FailR extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String failMessage = resultDialogs['ps_' + finalR + 'wrong'].toString();
-
+    String item = '';
     final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
     return SafeArea(
@@ -98,8 +98,10 @@ class FailR extends StatelessWidget {
                     Spacer(),
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => ThreeR()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ThreeR(item: item)));
                       },
                       child: Container(
                         height: 20,

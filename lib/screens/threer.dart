@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:recycler/screens/threer/rslidebutton.dart';
-
-void main() => runApp(ThreeR());
+// import 'package:recycler/strings/items.dart';
 
 class ThreeR extends StatefulWidget {
+  final item;
+  ThreeR({
+    Key? key,
+    required this.item,
+  }) : super(key: key);
+
   @override
   _ThreeRState createState() => _ThreeRState();
 }
@@ -14,8 +19,6 @@ class _ThreeRState extends State<ThreeR> {
 
   @override
   Widget build(BuildContext context) {
-    final item = 'coffeecup';
-
     return MaterialApp(
       theme: ThemeData(scaffoldBackgroundColor: Color(0xFFFFFFFF)),
       home: Scaffold(
@@ -50,26 +53,29 @@ class _ThreeRState extends State<ThreeR> {
                       ],
                     ),
                     child: Hero(
-                      tag: 'item-img',
-                      child: Image.asset("images/sampleitem.png"),
+                      tag: widget.item,
+                      child: Image.asset(
+                        'images/${widget.item}.png',
+                        fit: BoxFit.fitHeight,
+                      ),
                     ),
                   ),
                 ),
                 Spacer(),
                 RSlideButton(
-                  item: item,
+                  item: widget.item,
                   buttonName: 'educe',
                   isSuccess: true,
                 ),
                 Spacer(),
                 RSlideButton(
-                  item: item,
+                  item: widget.item,
                   buttonName: 'euse',
                   isSuccess: false,
                 ),
                 Spacer(),
                 RSlideButton(
-                  item: item,
+                  item: widget.item,
                   buttonName: 'ecycle',
                   isSuccess: false,
                 ),
