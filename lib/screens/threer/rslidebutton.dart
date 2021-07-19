@@ -28,9 +28,8 @@ class _RSlideButtonState extends State<RSlideButton> {
 
   Future<void> delayScreen(bool isSuccess) {
     // Imagine that this function is fetching user info from another service or database.
-    return Future.delayed(const Duration(milliseconds: 900), () {
+    return Future.delayed(const Duration(milliseconds: 700), () {
       final String resultRe = 'r' + widget.buttonName;
-
       isSuccess
           ? Navigator.push(
               context,
@@ -40,7 +39,6 @@ class _RSlideButtonState extends State<RSlideButton> {
                       )))
           : Navigator.push(context,
               MaterialPageRoute(builder: (context) => FailR(finalR: resultRe)));
-      //_color = isSuccess ? Colors.greenAccent : Colors.redAccent;
     });
   }
 
@@ -84,11 +82,11 @@ class _RSlideButtonState extends State<RSlideButton> {
             ),
           ]),
           AnimatedPositioned(
-            duration: Duration(seconds: 1),
+            duration: Duration(milliseconds: 100),
             left: _swipe,
             curve: Curves.fastLinearToSlowEaseIn,
             child: GestureDetector(
-              onHorizontalDragUpdate: (DragUpdateDetails details) {
+              onHorizontalDragStart: (DragStartDetails details) {
                 setState(() {
                   _color =
                       _notChanged ? Color(0xFF3DD598) : Colors.purpleAccent;
@@ -103,7 +101,7 @@ class _RSlideButtonState extends State<RSlideButton> {
               child: AnimatedContainer(
                 width: 84,
                 height: 86,
-                duration: Duration(seconds: 1),
+                duration: Duration(milliseconds: 100),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50),
                   color: _vcolor,
