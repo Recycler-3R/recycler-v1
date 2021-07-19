@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recycler/Minigame_Reduce/Reduce_Game.dart';
+import 'package:recycler/screens/threer.dart';
 import 'package:recycler/strings/dialogs.dart';
 
 class SuccessR extends StatelessWidget {
@@ -98,20 +99,47 @@ class SuccessR extends StatelessWidget {
                       ),
                     ),
                     Spacer(),
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Reduce()));
-                      },
-                      child: Container(
-                        height: 20,
-                        width: 100,
-                        alignment: Alignment.center,
-                        child: Expanded(
-                          child: Text('Play Game'),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Spacer(),
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ThreeR()));
+                          },
+                          child: Container(
+                            height: 20,
+                            width: 100,
+                            alignment: Alignment.center,
+                            child: Expanded(
+                              child: Text('Back'),
+                            ),
+                          ),
                         ),
-                      ),
+                        Spacer(),
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Reduce()));
+                          },
+                          child: Container(
+                            height: 20,
+                            width: 100,
+                            alignment: Alignment.center,
+                            child: Expanded(
+                              child: Text('Play Game'),
+                            ),
+                          ),
+                        ),
+                        Spacer(),
+                      ],
                     ),
+                    Spacer(),
                   ],
                 ),
               ),

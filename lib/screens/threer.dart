@@ -24,9 +24,7 @@ class _ThreeRState extends State<ThreeR> {
           child: Center(
             child: Column(
               children: [
-                SizedBox(
-                  height: 100,
-                ),
+                Spacer(),
                 Container(
                   height: 250,
                   width: 250,
@@ -53,30 +51,25 @@ class _ThreeRState extends State<ThreeR> {
                         ),
                       ]),
                 ),
-                SizedBox(
-                  height: 25,
-                ),
+                Spacer(),
                 RSlideButton(
                   item: item,
                   buttonName: 'educe',
                   isSuccess: true,
                 ),
-                SizedBox(
-                  height: 15,
-                ),
+                Spacer(),
                 RSlideButton(
                   item: item,
                   buttonName: 'euse',
                   isSuccess: false,
                 ),
-                SizedBox(
-                  height: 15,
-                ),
+                Spacer(),
                 RSlideButton(
                   item: item,
                   buttonName: 'ecycle',
                   isSuccess: false,
                 ),
+                Spacer(),
               ],
             ),
           ),

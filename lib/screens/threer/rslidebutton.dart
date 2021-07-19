@@ -28,7 +28,7 @@ class _RSlideButtonState extends State<RSlideButton> {
 
   Future<void> delayScreen(bool isSuccess) {
     // Imagine that this function is fetching user info from another service or database.
-    return Future.delayed(const Duration(milliseconds: 650), () {
+    return Future.delayed(const Duration(milliseconds: 900), () {
       final String resultRe = 'r' + widget.buttonName;
 
       isSuccess
