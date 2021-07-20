@@ -7,86 +7,86 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
+void _follow(context) {
+  showDialog<String>(
+      context: context,
+      builder: (BuildContext context) => new AlertDialog(
+            title: Text(
+              "Enjoying the game?",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Public Sans',
+              ),
+            ),
+            content: new Container(
+              width: 100.0,
+              height: 140.0,
+              decoration: new BoxDecoration(
+                shape: BoxShape.rectangle,
+                color: const Color(0xFFFFFF),
+                borderRadius: new BorderRadius.all(new Radius.circular(10.0)),
+              ),
+              child: new Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  // dialog centre
+                  new Expanded(
+                      child: new Container(
+                    child: Text(
+                      "Rate our app and follow us now!",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16.0,
+                        fontFamily: 'helvetica_neue_light',
+                      ),
+                    ),
+                  )),
+                  SizedBox(height: 10),
+                  new Expanded(
+                      child: new Container(
+                    child: Text(
+                      "Thank you!",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16.0,
+                        fontFamily: 'helvetica_neue_light',
+                      ),
+                    ),
+                  )),
+                  SizedBox(height: 10),
+                  // dialog bottom
+                  new Expanded(
+                    child: new Container(
+                      decoration: new BoxDecoration(
+                          color: const Color(0xFF9378FF),
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(10.0))),
+                      child: TextButton(
+                        style: TextButton.styleFrom(
+                          textStyle: const TextStyle(fontSize: 16),
+                        ),
+                        onPressed: () => Navigator.pop(context, 'Okay'),
+                        child: const Text(
+                          'Okay',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            backgroundColor: Color(0xFF5A40C5),
+          ));
+}
+
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
-    void _follow() {
-      showDialog<String>(
-          context: context,
-          builder: (BuildContext context) => new AlertDialog(
-                title: Text(
-                  "Enjoying the game?",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'Public Sans',
-                  ),
-                ),
-                content: new Container(
-                  width: 100.0,
-                  height: 140.0,
-                  decoration: new BoxDecoration(
-                    shape: BoxShape.rectangle,
-                    color: const Color(0xFFFFFF),
-                    borderRadius:
-                        new BorderRadius.all(new Radius.circular(10.0)),
-                  ),
-                  child: new Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: <Widget>[
-                      // dialog centre
-                      new Expanded(
-                          child: new Container(
-                        child: Text(
-                          "Rate our app and follow us now!",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16.0,
-                            fontFamily: 'helvetica_neue_light',
-                          ),
-                        ),
-                      )),
-                      SizedBox(height: 10),
-                      new Expanded(
-                          child: new Container(
-                        child: Text(
-                          "Thank you!",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16.0,
-                            fontFamily: 'helvetica_neue_light',
-                          ),
-                        ),
-                      )),
-                      SizedBox(height: 10),
-                      // dialog bottom
-                      new Expanded(
-                        child: new Container(
-                          decoration: new BoxDecoration(
-                              color: const Color(0xFF9378FF),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0))),
-                          child: TextButton(
-                            style: TextButton.styleFrom(
-                              textStyle: const TextStyle(fontSize: 16),
-                            ),
-                            onPressed: () => Navigator.pop(context, 'Okay'),
-                            child: const Text(
-                              'Okay',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                backgroundColor: Color(0xFF5A40C5),
-              ));
-    }
 
     return Scaffold(
       body: Container(
@@ -127,7 +127,7 @@ class _HomeState extends State<Home> {
                   ),
                   onPressed: () => {
                     setState(() {
-                      _follow();
+                      _follow(context);
                     })
                   },
                 ),

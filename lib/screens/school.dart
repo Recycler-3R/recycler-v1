@@ -1,4 +1,83 @@
 import 'package:flutter/material.dart';
+import 'package:recycler/screens/home.dart';
+
+void _follow(context) {
+  showDialog<String>(
+      context: context,
+      builder: (BuildContext context) => new AlertDialog(
+            title: Text(
+              "Congratulations!",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Public Sans',
+              ),
+            ),
+            content: new Container(
+              width: 100.0,
+              height: 140.0,
+              decoration: new BoxDecoration(
+                shape: BoxShape.rectangle,
+                color: const Color(0xFFFFFF),
+                borderRadius: new BorderRadius.all(new Radius.circular(10.0)),
+              ),
+              child: new Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  // dialog centre
+                  new Expanded(
+                      child: new Container(
+                    child: Text(
+                      "You have finished Level 3:",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16.0,
+                        fontFamily: 'helvetica_neue_light',
+                      ),
+                    ),
+                  )),
+                  SizedBox(height: 10),
+                  new Expanded(
+                      child: new Container(
+                    child: Text(
+                      " School ",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16.0,
+                        fontFamily: 'helvetica_neue_light',
+                      ),
+                    ),
+                  )),
+                  SizedBox(height: 10),
+                  // dialog bottom
+                  new Expanded(
+                    child: new Container(
+                      decoration: new BoxDecoration(
+                          color: const Color(0xFF9378FF),
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(10.0))),
+                      child: TextButton(
+                        style: TextButton.styleFrom(
+                          textStyle: const TextStyle(fontSize: 16),
+                        ),
+                        onPressed: () => {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => Home()))
+                        },
+                        child: const Text(
+                          'Next Level',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            backgroundColor: Color(0xFF5A40C5),
+          ));
+}
 
 class School extends StatefulWidget {
   const School({Key? key}) : super(key: key);
@@ -132,6 +211,31 @@ class MyStatelessWidget extends StatelessWidget {
                   alignment: Alignment.center),
             ),
           ),
+        ),
+        SafeArea(
+          child: Stack(children: [
+            Container(
+              height: height,
+              width: width,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("images/backgrounds/school1.png"),
+                    fit: BoxFit.fitWidth,
+                    alignment: Alignment.center),
+              ),
+            ),
+            Positioned(
+              top: height * 0.3,
+              child: Container(
+                height: height * 0.2,
+                width: width,
+                child: ElevatedButton(
+                  onPressed: () => {_follow(context)},
+                  child: Text('FINISH?'),
+                ),
+              ),
+            ),
+          ]),
         ),
       ],
     );
