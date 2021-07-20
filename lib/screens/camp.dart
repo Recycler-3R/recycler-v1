@@ -120,64 +120,141 @@ class MyStatelessWidget extends StatelessWidget {
       controller: controller,
       children: <Widget>[
         SafeArea(
-          child: Container(
-            height: height,
-            width: width,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("images/backgrounds/camp1.png"),
-                  fit: BoxFit.fitWidth,
-                  alignment: Alignment.center),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                InkWell(
-                  onTap: () => {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ThreeR(item: item1)))
-                  },
-                  child: Container(
-                    margin: EdgeInsets.fromLTRB(20, 50, 10, 10),
-                    height: height * 0.05,
-                    width: width * 0.05,
-                    child: Hero(
-                      tag: item1,
-                      child: Image.asset('images/items/coffeecup.png'),
+          child: InteractiveViewer(
+            maxScale: 5.0,
+            child: Container(
+              height: height,
+              width: width,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("images/backgrounds/camp1.png"),
+                    fit: BoxFit.fitWidth,
+                    alignment: Alignment.center),
+              ),
+              child: Stack(
+                children: [
+                  Positioned(
+                    top: height * 0.5,
+                    child: InkWell(
+                      onTap: () => {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ThreeR(item: item1)))
+                      },
+                      child: Container(
+                        margin: EdgeInsets.fromLTRB(20, 50, 10, 10),
+                        height: height * 0.01,
+                        width: width * 0.01,
+                        child: Hero(
+                          tag: item1,
+                          child: Image.asset('images/items/coffeecup.png'),
+                        ),
+                      ),
                     ),
                   ),
-                ),
-                InkWell(
-                  onTap: () => {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ThreeR(item: item2)))
-                  },
-                  child: Container(
-                    height: height * 0.1,
-                    width: width * 0.1,
-                    child: Hero(
-                      tag: item2,
-                      child: Image.asset("images/items/soapbottle.png"),
+                  Positioned(
+                    top: height * 0.2,
+                    right: width * 0.1,
+                    child: InkWell(
+                      onTap: () => {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ThreeR(item: item2)))
+                      },
+                      child: Container(
+                        height: height * 0.02,
+                        width: width * 0.02,
+                        child: Hero(
+                          tag: item2,
+                          child: Image.asset("images/items/soapbottle.png"),
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ],
+                  Positioned(
+                    top: height * 0.4,
+                    right: width * 0.5,
+                    child: InkWell(
+                      onTap: () => {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ThreeR(item: item2)))
+                      },
+                      child: Container(
+                        height: height * 0.01,
+                        width: width * 0.01,
+                        child: Hero(
+                          tag: item2,
+                          child: Image.asset("images/items/dirtyshirt.png"),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
         SafeArea(
-          child: Container(
-            height: height,
-            width: width,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("images/backgrounds/camp2.png"),
-                  fit: BoxFit.fitWidth,
-                  alignment: Alignment.center),
+          child: InteractiveViewer(
+            maxScale: 5.0,
+            child: Container(
+              height: height,
+              width: width,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("images/backgrounds/camp2.png"),
+                    fit: BoxFit.fitWidth,
+                    alignment: Alignment.center),
+              ),
+              child: Stack(
+                children: [
+                  Positioned(
+                    top: height * 0.3,
+                    left: width * 0.4,
+                    child: InkWell(
+                      onTap: () => {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ThreeR(item: item1)))
+                      },
+                      child: Container(
+                        margin: EdgeInsets.fromLTRB(20, 50, 10, 10),
+                        height: height * 0.01,
+                        width: width * 0.01,
+                        child: Hero(
+                          tag: item1,
+                          child: Image.asset('images/items/gas.png'),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: height * 0.7,
+                    right: width * 0.45,
+                    child: InkWell(
+                      onTap: () => {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ThreeR(item: item2)))
+                      },
+                      child: Container(
+                        height: height * 0.02,
+                        width: width * 0.02,
+                        child: Hero(
+                          tag: item2,
+                          child: Image.asset("images/items/garbagebag.png"),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
