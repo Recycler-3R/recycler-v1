@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:recycler/screens/threer/rslidebutton.dart';
+// import 'package:recycler/strings/items.dart';
 
-void main() => runApp(Sandbox());
+class ThreeR extends StatefulWidget {
+  final item;
+  ThreeR({
+    Key? key,
+    required this.item,
+  }) : super(key: key);
 
-class Sandbox extends StatefulWidget {
   @override
-  _SandboxState createState() => _SandboxState();
+  _ThreeRState createState() => _ThreeRState();
 }
 
-class _SandboxState extends State<Sandbox> {
+class _ThreeRState extends State<ThreeR> {
   // Define the various properties with default values. Update these properties
   // when the user taps a FloatingActionButton.
 
@@ -22,18 +27,14 @@ class _SandboxState extends State<Sandbox> {
           child: Center(
             child: Column(
               children: [
-                SizedBox(
-                  height: 100,
-                ),
-                Container(
-                  height: 250,
-                  width: 250,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25),
-                      image: DecorationImage(
-                        image: AssetImage("images/sampleitem.png"),
-                        fit: BoxFit.fitHeight,
-                      ),
+                Spacer(),
+                ClipRRect(
+                  borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                  child: Container(
+                    height: 250,
+                    width: 250,
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
                       gradient: LinearGradient(
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
@@ -49,20 +50,36 @@ class _SandboxState extends State<Sandbox> {
                           blurRadius: 4,
                           offset: Offset(0, 1), // changes position of shadow
                         ),
-                      ]),
+                      ],
+                    ),
+                    child: Hero(
+                      tag: widget.item,
+                      child: Image.asset(
+                        'images/${widget.item}.png',
+                        fit: BoxFit.fitHeight,
+                      ),
+                    ),
+                  ),
                 ),
-                SizedBox(
-                  height: 25,
+                Spacer(),
+                RSlideButton(
+                  item: widget.item,
+                  buttonName: 'educe',
+                  isSuccess: true,
                 ),
-                RSlideButton(buttonName: 'educe'),
-                SizedBox(
-                  height: 15,
+                Spacer(),
+                RSlideButton(
+                  item: widget.item,
+                  buttonName: 'euse',
+                  isSuccess: false,
                 ),
-                RSlideButton(buttonName: 'euse'),
-                SizedBox(
-                  height: 15,
+                Spacer(),
+                RSlideButton(
+                  item: widget.item,
+                  buttonName: 'ecycle',
+                  isSuccess: false,
                 ),
-                RSlideButton(buttonName: 'ecycle'),
+                Spacer(),
               ],
             ),
           ),

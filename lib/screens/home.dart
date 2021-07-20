@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:recycler/Minigame_Reduce/Reduce_Game.dart';
 import 'package:recycler/screens/inputname.dart';
 import 'package:recycler/screens/loginScreen.dart';
 
@@ -102,10 +101,10 @@ class _HomeState extends State<Home> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              SizedBox(height: 550),
+              SizedBox(height: height * 0.68),
               Container(
-                height: 50,
-                width: 200,
+                height: height * 0.075,
+                width: width * 0.55,
                 decoration: new BoxDecoration(
                     color: const Color(0xFF9378FF),
                     boxShadow: [
@@ -133,10 +132,10 @@ class _HomeState extends State<Home> {
                   },
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: height * 0.03),
               Container(
-                height: 50,
-                width: 200,
+                height: height * 0.075,
+                width: width * 0.55,
                 decoration: new BoxDecoration(
                     color: const Color(0xFF30D046),
                     boxShadow: [
@@ -163,10 +162,10 @@ class _HomeState extends State<Home> {
                   },
                 ),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: height * 0.03),
               Container(
-                height: 50,
-                width: 200,
+                height: height * 0.075,
+                width: width * 0.55,
                 decoration: new BoxDecoration(
                     color: const Color(0xFF30D046),
                     boxShadow: [
@@ -190,7 +189,7 @@ class _HomeState extends State<Home> {
                   onPressed: () => {
                     // for (int i = 0; i < 10; i++) {setColorGrid(i)},
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Reduce()))
+                        MaterialPageRoute(builder: (context) => AuthApp()))
                   },
                 ),
               ),

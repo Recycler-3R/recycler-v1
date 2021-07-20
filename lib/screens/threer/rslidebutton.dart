@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:recycler/screens/threer/fail.dart';
+import 'package:recycler/screens/threer/success.dart';
 
 class RSlideButton extends StatefulWidget {
   final String buttonName;
+  final item;
+  final bool isSuccess;
   RSlideButton({
     Key? key,
+    required this.item,
     required this.buttonName,
+    required this.isSuccess,
   }) : super(key: key);
 
   @override
@@ -18,8 +23,24 @@ class _RSlideButtonState extends State<RSlideButton> {
   Color _color = Color(0xFF3DD598);
   Color _vcolor = Color(0xFF9378FF);
   double _swipe = 0;
-  bool _isnotRed = true;
+  bool _notChanged = true;
   BorderRadiusGeometry _borderRadius = BorderRadius.circular(40);
+
+  Future<void> delayScreen(bool isSuccess) {
+    // Imagine that this function is fetching user info from another service or database.
+    return Future.delayed(const Duration(milliseconds: 700), () {
+      final String resultRe = 'r' + widget.buttonName;
+      isSuccess
+          ? Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => SuccessR(
+                        finalR: resultRe,
+                      )))
+          : Navigator.push(context,
+              MaterialPageRoute(builder: (context) => FailR(finalR: resultRe)));
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,8 +72,8 @@ class _RSlideButtonState extends State<RSlideButton> {
             ),
             Padding(
               padding: widget.buttonName == 'euse'
-                  ? EdgeInsets.only(right: 40.0)
-                  : EdgeInsets.only(right: 20.0),
+                  ? EdgeInsets.only(right: 50.0)
+                  : EdgeInsets.only(right: 23.0),
               child: Text(
                 widget.buttonName,
                 style: TextStyle(
@@ -61,24 +82,26 @@ class _RSlideButtonState extends State<RSlideButton> {
             ),
           ]),
           AnimatedPositioned(
-            duration: Duration(seconds: 1),
+            duration: Duration(milliseconds: 100),
             left: _swipe,
             curve: Curves.fastLinearToSlowEaseIn,
             child: GestureDetector(
-              onHorizontalDragUpdate: (DragUpdateDetails details) {
+              onHorizontalDragStart: (DragStartDetails details) {
                 setState(() {
-                  _color = _isnotRed ? Color(0xFF3DD598) : Colors.redAccent;
-                  _vcolor = _isnotRed ? Color(0xFF9378FF) : Colors.redAccent;
-                  _swipe = _isnotRed ? 0 : 130;
-                  _isnotRed = _isnotRed ? false : true;
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => FailR()));
+                  _color =
+                      _notChanged ? Color(0xFF3DD598) : Colors.purpleAccent;
+                  _vcolor =
+                      _notChanged ? Color(0xFF9378FF) : Colors.deepPurpleAccent;
+                  _swipe = _notChanged ? 0 : 130;
+                  _notChanged = _notChanged ? false : true;
+
+                  delayScreen(widget.isSuccess);
                 });
               },
               child: AnimatedContainer(
                 width: 84,
                 height: 86,
-                duration: Duration(seconds: 1),
+                duration: Duration(milliseconds: 100),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50),
                   color: _vcolor,
