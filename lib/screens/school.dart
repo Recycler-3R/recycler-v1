@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:recycler/screens/threer.dart';
 
 class School extends StatefulWidget {
   const School({Key? key}) : super(key: key);
@@ -11,26 +10,13 @@ class School extends StatefulWidget {
 class _SchoolState extends State<School> {
   @override
   Widget build(BuildContext context) {
-    String item = '';
-
     return Scaffold(
       appBar: AppBar(
-        title: const Text('School'),
+        title: const Text('Level 3: School'),
         elevation: 0,
-        centerTitle: true,
         backgroundColor: Colors.transparent,
-        actions: [
-          IconButton(
-              onPressed: () => {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ThreeR(item: item)))
-                  },
-              icon: Icon(Icons.arrow_forward_ios))
-        ],
       ),
-      extendBodyBehindAppBar: true,
+      extendBodyBehindAppBar: false,
       body: const MyStatelessWidget(),
     );
   }
@@ -57,7 +43,7 @@ class MyStatelessWidget extends StatelessWidget {
             width: width,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("images/school2.png"),
+                  image: AssetImage("images/backgrounds/school2.png"),
                   fit: BoxFit.fitWidth,
                   alignment: Alignment.center),
             ),
@@ -69,7 +55,7 @@ class MyStatelessWidget extends StatelessWidget {
             width: width,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("images/school1.png"),
+                  image: AssetImage("images/backgrounds/school1.png"),
                   fit: BoxFit.fitWidth,
                   alignment: Alignment.center),
             ),
@@ -81,7 +67,7 @@ class MyStatelessWidget extends StatelessWidget {
             width: width,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("images/school1.png"),
+                  image: AssetImage("images/backgrounds/school1.png"),
                   fit: BoxFit.fitWidth,
                   alignment: Alignment.center),
             ),
@@ -93,7 +79,7 @@ class MyStatelessWidget extends StatelessWidget {
             width: width,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("images/school2.png"),
+                  image: AssetImage("images/backgrounds/school2.png"),
                   fit: BoxFit.fitWidth,
                   alignment: Alignment.center),
             ),
@@ -105,7 +91,7 @@ class MyStatelessWidget extends StatelessWidget {
             width: width,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("images/school1.png"),
+                  image: AssetImage("images/backgrounds/school1.png"),
                   fit: BoxFit.fitWidth,
                   alignment: Alignment.center),
             ),
@@ -117,7 +103,7 @@ class MyStatelessWidget extends StatelessWidget {
             width: width,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("images/school1.png"),
+                  image: AssetImage("images/backgrounds/school1.png"),
                   fit: BoxFit.fitWidth,
                   alignment: Alignment.center),
             ),
@@ -129,7 +115,7 @@ class MyStatelessWidget extends StatelessWidget {
             width: width,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("images/school2.png"),
+                  image: AssetImage("images/backgrounds/school2.png"),
                   fit: BoxFit.fitWidth,
                   alignment: Alignment.center),
             ),
@@ -141,7 +127,7 @@ class MyStatelessWidget extends StatelessWidget {
             width: width,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("images/school1.png"),
+                  image: AssetImage("images/backgrounds/school1.png"),
                   fit: BoxFit.fitWidth,
                   alignment: Alignment.center),
             ),

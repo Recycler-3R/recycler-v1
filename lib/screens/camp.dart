@@ -14,9 +14,8 @@ class _CampSiteState extends State<CampSite> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Camp Site'),
+        title: const Text('Level 1: Camp Site'),
         elevation: 0,
-        centerTitle: true,
         backgroundColor: Colors.transparent,
         actions: [
           IconButton(
@@ -27,7 +26,7 @@ class _CampSiteState extends State<CampSite> {
               icon: Icon(Icons.arrow_forward_ios))
         ],
       ),
-      extendBodyBehindAppBar: true,
+      extendBodyBehindAppBar: false,
       body: MyStatelessWidget(),
     );
   }
@@ -41,7 +40,7 @@ class MyStatelessWidget extends StatelessWidget {
     final PageController controller = PageController(initialPage: 0);
     final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
-    String item1 = 'sampleitem';
+    String item1 = 'coffeecup';
     String item2 = 'soapbottle';
 
     return PageView(
@@ -56,7 +55,7 @@ class MyStatelessWidget extends StatelessWidget {
             width: width,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("images/camp1.png"),
+                  image: AssetImage("images/backgrounds/camp1.png"),
                   fit: BoxFit.fitWidth,
                   alignment: Alignment.center),
             ),
@@ -76,7 +75,7 @@ class MyStatelessWidget extends StatelessWidget {
                     width: width * 0.05,
                     child: Hero(
                       tag: item1,
-                      child: Image.asset('images/sampleitem.png'),
+                      child: Image.asset('images/items/coffeecup.png'),
                     ),
                   ),
                 ),
@@ -92,7 +91,7 @@ class MyStatelessWidget extends StatelessWidget {
                     width: width * 0.1,
                     child: Hero(
                       tag: item2,
-                      child: Image.asset("images/soapbottle.png"),
+                      child: Image.asset("images/items/soapbottle.png"),
                     ),
                   ),
                 ),
@@ -106,7 +105,7 @@ class MyStatelessWidget extends StatelessWidget {
             width: width,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("images/camp2.png"),
+                  image: AssetImage("images/backgrounds/camp2.png"),
                   fit: BoxFit.fitWidth,
                   alignment: Alignment.center),
             ),
@@ -118,7 +117,7 @@ class MyStatelessWidget extends StatelessWidget {
             width: width,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("images/camp2.png"),
+                  image: AssetImage("images/backgrounds/camp2.png"),
                   fit: BoxFit.fitWidth,
                   alignment: Alignment.center),
             ),
@@ -130,7 +129,7 @@ class MyStatelessWidget extends StatelessWidget {
             width: width,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("images/camp1.png"),
+                  image: AssetImage("images/backgrounds/camp1.png"),
                   fit: BoxFit.fitWidth,
                   alignment: Alignment.center),
             ),
@@ -142,7 +141,7 @@ class MyStatelessWidget extends StatelessWidget {
             width: width,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("images/camp2.png"),
+                  image: AssetImage("images/backgrounds/camp2.png"),
                   fit: BoxFit.fitWidth,
                   alignment: Alignment.center),
             ),
@@ -154,7 +153,7 @@ class MyStatelessWidget extends StatelessWidget {
             width: width,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("images/camp2.png"),
+                  image: AssetImage("images/backgrounds/camp2.png"),
                   fit: BoxFit.fitWidth,
                   alignment: Alignment.center),
             ),
@@ -166,7 +165,7 @@ class MyStatelessWidget extends StatelessWidget {
             width: width,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("images/camp1.png"),
+                  image: AssetImage("images/backgrounds/camp1.png"),
                   fit: BoxFit.fitWidth,
                   alignment: Alignment.center),
             ),
@@ -178,7 +177,7 @@ class MyStatelessWidget extends StatelessWidget {
             width: width,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("images/camp2.png"),
+                  image: AssetImage("images/backgrounds/camp2.png"),
                   fit: BoxFit.fitWidth,
                   alignment: Alignment.center),
             ),

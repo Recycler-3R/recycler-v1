@@ -94,7 +94,7 @@ class _HomeState extends State<Home> {
           width: width,
           decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("images/StartingPoint.png"),
+                image: AssetImage("images/backgrounds/StartingPoint.png"),
                 fit: BoxFit.fitWidth,
                 alignment: Alignment.center),
           ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:recycler/screens/threer.dart';
 import 'package:recycler/strings/dialogs.dart';
 
 class FailR extends StatelessWidget {
@@ -12,7 +11,6 @@ class FailR extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String failMessage = resultDialogs['ps_' + finalR + 'wrong'].toString();
-    String item = '';
     final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
     return SafeArea(
@@ -36,7 +34,7 @@ class FailR extends StatelessWidget {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(25),
                     image: DecorationImage(
-                      image: AssetImage("images/sampleitem.png"),
+                      image: AssetImage("images/items/coffeecup.png"),
                     ),
                     color: Color(0xFF3DD598),
                     boxShadow: [
@@ -98,10 +96,7 @@ class FailR extends StatelessWidget {
                     Spacer(),
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ThreeR(item: item)));
+                        Navigator.pop(context);
                       },
                       child: Container(
                         height: 20,

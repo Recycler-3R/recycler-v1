@@ -77,7 +77,11 @@ class _RSlideButtonState extends State<RSlideButton> {
               child: Text(
                 widget.buttonName,
                 style: TextStyle(
-                    fontFamily: 'AutourOne', fontSize: 30, color: Colors.black),
+                  fontFamily: 'AutourOne',
+                  fontSize: 30,
+                  color: Colors.black,
+                  decoration: TextDecoration.none,
+                ),
               ),
             ),
           ]),
@@ -111,9 +115,11 @@ class _RSlideButtonState extends State<RSlideButton> {
                   child: Text(
                     'R',
                     style: TextStyle(
-                        fontFamily: 'AutourOne',
-                        fontSize: 30,
-                        color: Colors.white),
+                      fontFamily: 'AutourOne',
+                      fontSize: 30,
+                      color: Colors.white,
+                      decoration: TextDecoration.none,
+                    ),
                   ),
                 ),
               ),

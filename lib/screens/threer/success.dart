@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:recycler/Minigame_Reduce/Reduce_Game.dart';
-import 'package:recycler/screens/threer.dart';
 import 'package:recycler/strings/dialogs.dart';
 
 class SuccessR extends StatelessWidget {
@@ -15,7 +14,6 @@ class SuccessR extends StatelessWidget {
   Widget build(BuildContext context) {
     String successMessage =
         resultDialogs['ps_' + finalR + 'correct'].toString();
-    String item = '';
     final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
     return SafeArea(
@@ -39,7 +37,7 @@ class SuccessR extends StatelessWidget {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(25),
                     image: DecorationImage(
-                      image: AssetImage("images/sampleitem.png"),
+                      image: AssetImage("images/items/coffeecup.png"),
                     ),
                     color: Color(0xFF3DD598),
                     boxShadow: [
@@ -105,10 +103,7 @@ class SuccessR extends StatelessWidget {
                         Spacer(),
                         ElevatedButton(
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => ThreeR(item: item)));
+                            Navigator.pop(context);
                           },
                           child: Container(
                             height: 20,

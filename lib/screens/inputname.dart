@@ -18,7 +18,7 @@ class _InputNameState extends State<InputName> {
           width: width,
           decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("images/2ndpoint.png"),
+                image: AssetImage("images/backgrounds/2ndpoint.png"),
                 fit: BoxFit.fitWidth,
                 alignment: Alignment.center),
           ),

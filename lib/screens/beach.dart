@@ -13,9 +13,8 @@ class _BeachState extends State<Beach> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Beach'),
+        title: const Text('Level 2: Beach'),
         elevation: 0,
-        centerTitle: true,
         backgroundColor: Colors.transparent,
         actions: [
           IconButton(
@@ -26,7 +25,7 @@ class _BeachState extends State<Beach> {
               icon: Icon(Icons.arrow_forward_ios))
         ],
       ),
-      extendBodyBehindAppBar: true,
+      extendBodyBehindAppBar: false,
       body: const MyStatelessWidget(),
     );
   }
@@ -53,7 +52,7 @@ class MyStatelessWidget extends StatelessWidget {
             width: width,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("images/beach1.png"),
+                  image: AssetImage("images/backgrounds/beach1.png"),
                   fit: BoxFit.fitWidth,
                   alignment: Alignment.center),
             ),
@@ -65,7 +64,7 @@ class MyStatelessWidget extends StatelessWidget {
             width: width,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("images/beach2.png"),
+                  image: AssetImage("images/backgrounds/beach2.png"),
                   fit: BoxFit.fitWidth,
                   alignment: Alignment.center),
             ),
@@ -77,7 +76,7 @@ class MyStatelessWidget extends StatelessWidget {
             width: width,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("images/beach1.png"),
+                  image: AssetImage("images/backgrounds/beach1.png"),
                   fit: BoxFit.fitWidth,
                   alignment: Alignment.center),
             ),
@@ -89,7 +88,7 @@ class MyStatelessWidget extends StatelessWidget {
             width: width,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("images/beach1.png"),
+                  image: AssetImage("images/backgrounds/beach1.png"),
                   fit: BoxFit.fitWidth,
                   alignment: Alignment.center),
             ),
@@ -101,7 +100,7 @@ class MyStatelessWidget extends StatelessWidget {
             width: width,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("images/beach2.png"),
+                  image: AssetImage("images/backgrounds/beach2.png"),
                   fit: BoxFit.fitWidth,
                   alignment: Alignment.center),
             ),
@@ -113,7 +112,7 @@ class MyStatelessWidget extends StatelessWidget {
             width: width,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("images/beach1.png"),
+                  image: AssetImage("images/backgrounds/beach1.png"),
                   fit: BoxFit.fitWidth,
                   alignment: Alignment.center),
             ),
@@ -125,7 +124,7 @@ class MyStatelessWidget extends StatelessWidget {
             width: width,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("images/beach1.png"),
+                  image: AssetImage("images/backgrounds/beach1.png"),
                   fit: BoxFit.fitWidth,
                   alignment: Alignment.center),
             ),
@@ -137,7 +136,7 @@ class MyStatelessWidget extends StatelessWidget {
             width: width,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("images/beach2.png"),
+                  image: AssetImage("images/backgrounds/beach2.png"),
                   fit: BoxFit.fitWidth,
                   alignment: Alignment.center),
             ),
