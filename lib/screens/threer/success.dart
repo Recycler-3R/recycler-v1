@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recycler/Minigame_Reduce/Reduce_Game.dart';
-import 'package:recycler/strings/dialogs.dart';
+import 'package:recycler/others/dialogs.dart';
 
 class SuccessR extends StatelessWidget {
   final String finalR;

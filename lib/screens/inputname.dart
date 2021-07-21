@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:recycler/screens/home.dart';
 import 'package:recycler/screens/camp.dart';
 
 class InputName extends StatefulWidget {
@@ -87,10 +86,7 @@ class _InputNameState extends State<InputName> {
                     'Back',
                     style: TextStyle(color: Colors.white),
                   ),
-                  onPressed: () => {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Home()))
-                  },
+                  onPressed: () => {Navigator.pop(context)},
                 ),
               ),
               SizedBox(
@@ -116,12 +112,28 @@ class _InputNameState extends State<InputName> {
                         fontSize: 16, fontFamily: 'Public Sans'),
                   ),
                   child: const Text(
-                    'Continue',
+                    'START',
                     style: TextStyle(color: Colors.white),
                   ),
                   onPressed: () => {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => CampSite()))
+                    Navigator.push(
+                      context,
+                      PageRouteBuilder(
+                          transitionDuration: Duration(milliseconds: 1500),
+                          transitionsBuilder:
+                              (context, animation, animationTime, child) {
+                            animation = CurvedAnimation(
+                                parent: animation, curve: Curves.elasticOut);
+                            return ScaleTransition(
+                              alignment: Alignment.center,
+                              scale: animation,
+                              child: child,
+                            );
+                          },
+                          pageBuilder: (context, animation, animationTime) {
+                            return CampSite();
+                          }),
+                    ),
                   },
                 ),
               ),

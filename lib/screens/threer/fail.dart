@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recycler/strings/dialogs.dart';
+import 'package:recycler/others/dialogs.dart';
 
 class FailR extends StatelessWidget {
   final String finalR;

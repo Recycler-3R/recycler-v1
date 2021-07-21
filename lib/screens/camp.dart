@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recycler/screens/beach.dart';
 import 'package:recycler/screens/threer.dart';
-import 'package:recycler/strings/items.dart';
+import 'package:recycler/others/items.dart';
 
 void _follow(context) {
   showDialog<String>(
