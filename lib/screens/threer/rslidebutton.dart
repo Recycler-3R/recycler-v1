@@ -36,9 +36,13 @@ class _RSlideButtonState extends State<RSlideButton> {
               MaterialPageRoute(
                   builder: (context) => SuccessR(
                         finalR: resultRe,
+                        item: widget.item,
                       )))
-          : Navigator.push(context,
-              MaterialPageRoute(builder: (context) => FailR(finalR: resultRe)));
+          : Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      FailR(finalR: resultRe, item: widget.item)));
     });
   }
 

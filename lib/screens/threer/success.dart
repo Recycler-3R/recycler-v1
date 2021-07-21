@@ -4,10 +4,12 @@ import 'package:recycler/strings/dialogs.dart';
 
 class SuccessR extends StatelessWidget {
   final String finalR;
+  final String item;
 
   const SuccessR({
     Key? key,
     required this.finalR,
+    required this.item,
   }) : super(key: key);
 
   @override
@@ -37,7 +39,7 @@ class SuccessR extends StatelessWidget {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(25),
                     image: DecorationImage(
-                      image: AssetImage("images/items/coffeecup.png"),
+                      image: AssetImage("images/items/" + item + ".png"),
                     ),
                     color: Color(0xFF3DD598),
                     boxShadow: [
