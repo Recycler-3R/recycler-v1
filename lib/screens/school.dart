@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:recycler/others/items.dart';
+import 'package:recycler/others/sitepage1.dart';
 import 'package:recycler/screens/home.dart';
 
 void _follow(context) {
@@ -91,11 +93,28 @@ class _SchoolState extends State<School> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Level 3: School'),
-        elevation: 0,
+        title: Text(
+          'Level 3: School',
+          style: TextStyle(
+            color: Colors.black,
+            shadows: <Shadow>[
+              Shadow(
+                offset: Offset(3.0, 3.0),
+                blurRadius: 5.0,
+                color: Color.fromARGB(0, 0, 0, 0),
+              ),
+              Shadow(
+                offset: Offset(2.0, 2.0),
+                blurRadius: 5.0,
+                color: Color.fromARGB(255, 255, 255, 255),
+              ),
+            ],
+          ),
+        ),
+        elevation: 0.0,
         backgroundColor: Colors.transparent,
       ),
-      extendBodyBehindAppBar: false,
+      extendBodyBehindAppBar: true,
       body: const MyStatelessWidget(),
     );
   }
@@ -110,110 +129,91 @@ class MyStatelessWidget extends StatelessWidget {
     final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
 
+    final String loc1 = 'school2.png';
+    final String loc2 = 'school1.png';
+
     return PageView(
-      /// [PageView.scrollDirection] defaults to [Axis.horizontal].
-      /// Use [Axis.vertical] to scroll vertically.
       scrollDirection: Axis.horizontal,
       controller: controller,
       children: <Widget>[
-        SafeArea(
-          child: Container(
-            height: height,
-            width: width,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("images/backgrounds/school2.png"),
-                  fit: BoxFit.fitWidth,
-                  alignment: Alignment.center),
-            ),
+        SitePage(
+            top: 0.67,
+            left: 0.5,
+            right: 0.6,
+            item1: item[3],
+            item2: item[4],
+            item3: item[5],
+            location: loc1),
+        SitePage(
+            top: 0.76,
+            left: 0.64,
+            right: 0.98,
+            item1: item[6],
+            item2: item[7],
+            item3: item[8],
+            location: loc2),
+        Container(
+          height: height,
+          width: width,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("images/backgrounds/school1.png"),
+                fit: BoxFit.fitWidth,
+                alignment: Alignment.center),
           ),
         ),
-        SafeArea(
-          child: Container(
-            height: height,
-            width: width,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("images/backgrounds/school1.png"),
-                  fit: BoxFit.fitWidth,
-                  alignment: Alignment.center),
-            ),
+        Container(
+          height: height,
+          width: width,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("images/backgrounds/school2.png"),
+                fit: BoxFit.fitWidth,
+                alignment: Alignment.center),
           ),
         ),
-        SafeArea(
-          child: Container(
-            height: height,
-            width: width,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("images/backgrounds/school1.png"),
-                  fit: BoxFit.fitWidth,
-                  alignment: Alignment.center),
-            ),
+        Container(
+          height: height,
+          width: width,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("images/backgrounds/school1.png"),
+                fit: BoxFit.fitWidth,
+                alignment: Alignment.center),
           ),
         ),
-        SafeArea(
-          child: Container(
-            height: height,
-            width: width,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("images/backgrounds/school2.png"),
-                  fit: BoxFit.fitWidth,
-                  alignment: Alignment.center),
-            ),
+        Container(
+          height: height,
+          width: width,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("images/backgrounds/school1.png"),
+                fit: BoxFit.fitWidth,
+                alignment: Alignment.center),
           ),
         ),
-        SafeArea(
-          child: Container(
-            height: height,
-            width: width,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("images/backgrounds/school1.png"),
-                  fit: BoxFit.fitWidth,
-                  alignment: Alignment.center),
-            ),
+        Container(
+          height: height,
+          width: width,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("images/backgrounds/school2.png"),
+                fit: BoxFit.fitWidth,
+                alignment: Alignment.center),
           ),
         ),
-        SafeArea(
-          child: Container(
-            height: height,
-            width: width,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("images/backgrounds/school1.png"),
-                  fit: BoxFit.fitWidth,
-                  alignment: Alignment.center),
-            ),
+        Container(
+          height: height,
+          width: width,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("images/backgrounds/school1.png"),
+                fit: BoxFit.fitWidth,
+                alignment: Alignment.center),
           ),
         ),
-        SafeArea(
-          child: Container(
-            height: height,
-            width: width,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("images/backgrounds/school2.png"),
-                  fit: BoxFit.fitWidth,
-                  alignment: Alignment.center),
-            ),
-          ),
-        ),
-        SafeArea(
-          child: Container(
-            height: height,
-            width: width,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("images/backgrounds/school1.png"),
-                  fit: BoxFit.fitWidth,
-                  alignment: Alignment.center),
-            ),
-          ),
-        ),
-        SafeArea(
-          child: Stack(children: [
+        Stack(
+          children: [
             Container(
               height: height,
               width: width,
@@ -235,7 +235,7 @@ class MyStatelessWidget extends StatelessWidget {
                 ),
               ),
             ),
-          ]),
+          ],
         ),
       ],
     );

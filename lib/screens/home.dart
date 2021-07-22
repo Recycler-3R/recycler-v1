@@ -167,8 +167,24 @@ class _HomeState extends State<Home> {
                       style: TextStyle(color: Colors.white),
                     ),
                     onPressed: () => {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => InputName()))
+                      Navigator.push(
+                        context,
+                        PageRouteBuilder(
+                            transitionDuration: Duration(milliseconds: 700),
+                            transitionsBuilder:
+                                (context, animation, animationTime, child) {
+                              animation = CurvedAnimation(
+                                  parent: animation,
+                                  curve: Curves.easeInToLinear);
+                              return FadeTransition(
+                                opacity: animation,
+                                child: child,
+                              );
+                            },
+                            pageBuilder: (context, animation, animationTime) {
+                              return InputName();
+                            }),
+                      ),
                     },
                   ),
                 ),
