@@ -119,10 +119,17 @@ class _BeachState extends State<Beach> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: Padding(
+          padding: EdgeInsets.only(left: 10.0),
+          child: Image.asset('images/Beach_Icon.png'),
+        ),
         title: Text(
           'Level 2: Beach',
           style: TextStyle(
             color: Colors.black,
+            fontSize: 16,
+            fontWeight: FontWeight.w300,
+            fontFamily: 'AutourOne',
             shadows: <Shadow>[
               Shadow(
                 offset: Offset(3.0, 3.0),
@@ -154,7 +161,6 @@ class MyStatelessWidget extends StatelessWidget {
     final PageController controller = PageController(initialPage: 0);
     final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
-
     final String loc1 = 'beach1.png';
     final String loc2 = 'beach2.png';
 

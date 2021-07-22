@@ -119,15 +119,14 @@ class _InputNameState extends State<InputName> {
                     Navigator.push(
                       context,
                       PageRouteBuilder(
-                          transitionDuration: Duration(milliseconds: 500),
+                          transitionDuration: Duration(milliseconds: 1000),
                           transitionsBuilder:
                               (context, animation, animationTime, child) {
                             animation = CurvedAnimation(
                                 parent: animation,
-                                curve: Curves.linearToEaseOut);
-                            return ScaleTransition(
-                              alignment: Alignment.centerLeft,
-                              scale: animation,
+                                curve: Curves.easeInToLinear);
+                            return FadeTransition(
+                              opacity: animation,
                               child: child,
                             );
                           },

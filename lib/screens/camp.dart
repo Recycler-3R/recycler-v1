@@ -120,11 +120,17 @@ class _CampSiteState extends State<CampSite> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: Padding(
+          padding: EdgeInsets.only(left: 10.0),
+          child: Image.asset('images/Camp_Icon.png'),
+        ),
         title: Text(
           'Level 1: Camp Site',
           style: TextStyle(
             color: Colors.black,
-            // backgroundColor: Colors.lightGreenAccent.withOpacity((0.5)),
+            fontSize: 16,
+            fontWeight: FontWeight.w300,
+            fontFamily: 'AutourOne',
             shadows: <Shadow>[
               Shadow(
                 offset: Offset(3.0, 3.0),
@@ -163,6 +169,21 @@ class MyStatelessWidget extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       controller: controller,
       children: <Widget>[
+        Container(
+          height: height,
+          width: width,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("images/backgrounds/" + loc1),
+                fit: BoxFit.fitWidth,
+                alignment: Alignment.center),
+          ),
+          child: Stack(
+            children: [
+              AnimatedImage(),
+            ],
+          ),
+        ),
         SitePage(
           top: 0.48,
           left: 0.7,
@@ -438,6 +459,113 @@ class MyStatelessWidget extends StatelessWidget {
             ),
           ),
         ]),
+      ],
+    );
+  }
+}
+
+class AnimatedImage extends StatefulWidget {
+  const AnimatedImage({Key? key}) : super(key: key);
+
+  @override
+  _AnimatedImageState createState() => _AnimatedImageState();
+}
+
+class _AnimatedImageState extends State<AnimatedImage>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _controller = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 1000),
+  )..repeat(reverse: true);
+  late Animation<Offset> _animation = Tween(
+    begin: Offset.zero,
+    end: Offset(0.0, -0.01),
+  ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+  var padding = EdgeInsets.all(28.0);
+  String message = 'Hi there, Recycler!';
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final double height = MediaQuery.of(context).size.height;
+    final double width = MediaQuery.of(context).size.width;
+
+    return Stack(
+      children: [
+        Positioned(
+          top: height * 0.38,
+          left: 30,
+          child: Container(
+            height: height * 0.4,
+            width: width * 0.4,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("images/robot.png"),
+                  fit: BoxFit.fitWidth,
+                  alignment: Alignment.center),
+            ),
+          ),
+        ),
+        SlideTransition(
+          position: _animation,
+          child: InkWell(
+            onTap: () {
+              setState(() {
+                padding = EdgeInsets.all(18.0);
+                message = 'Time to start cleaning up!';
+              });
+            },
+            onDoubleTap: () {
+              setState(() {
+                padding = EdgeInsets.all(38.0);
+                message = 'YEEEY!';
+              });
+            },
+            child: Stack(
+              children: [
+                Positioned(
+                  top: height * 0.25,
+                  left: width * 0.39,
+                  child: Container(
+                    height: height * 0.15,
+                    width: width * 0.5,
+                    decoration: BoxDecoration(
+                      border: Border.all(width: 3, color: Colors.transparent),
+                      borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                      color: Color(0xFF9378FF).withOpacity(0.8),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.deepPurpleAccent,
+                          spreadRadius: 1,
+                          blurRadius: 5,
+                          offset: Offset(0, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
+                    child: Padding(
+                      padding: padding,
+                      child: Text(
+                        message,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: 'AutourOne',
+                          fontWeight: FontWeight.w400,
+                          fontSize: 18,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
       ],
     );
   }

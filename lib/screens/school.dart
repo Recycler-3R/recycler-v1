@@ -93,10 +93,17 @@ class _SchoolState extends State<School> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: Padding(
+          padding: EdgeInsets.only(left: 10.0),
+          child: Image.asset('images/School_Icon.png'),
+        ),
         title: Text(
           'Level 3: School',
           style: TextStyle(
             color: Colors.black,
+            fontSize: 16,
+            fontWeight: FontWeight.w300,
+            fontFamily: 'AutourOne',
             shadows: <Shadow>[
               Shadow(
                 offset: Offset(3.0, 3.0),
