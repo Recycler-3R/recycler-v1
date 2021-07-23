@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:recycler/screens/camp.dart';
 import 'package:recycler/screens/beach.dart';
 import 'package:recycler/screens/school.dart';
+import 'package:recycler/others/globaldata.dart';
 
 class ChooseLocation extends StatefulWidget {
   const ChooseLocation({Key? key}) : super(key: key);
@@ -37,13 +38,36 @@ void _chooseloc(context, Widget location, alignment) {
   );
 }
 
+Future<void> setBat(decrementBat) {
+  // Imagine that this function is fetching user info from another service or database.
+  return Future.delayed(const Duration(milliseconds: 1000), () {
+    decrementBat();
+  });
+}
+
 class _ChooseLocationState extends State<ChooseLocation> {
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
-    String battery = 'fullbattery.png';
+    GlobalData _globalData = GlobalData();
+    void decrementBat() {
+      setState(() {
+        _globalData.decrementBattery();
+        if (_globalData.getbattery == 0) {
+          _globalData.setbattery();
+        }
+      });
+    }
 
+    String battery;
+    if (_globalData.getbattery == 3) {
+      battery = 'fullbattery.png';
+    } else if (_globalData.getbattery == 2) {
+      battery = 'midbattery.png';
+    } else {
+      battery = 'lowbattery.png';
+    }
     return Container(
       height: height,
       width: width,
@@ -161,7 +185,11 @@ class _ChooseLocationState extends State<ChooseLocation> {
               GestureDetector(
                 onTap: () {
                   _chooseloc(
-                      context, CampSite(battery: battery), Alignment.topCenter);
+                    context,
+                    CampSite(battery: battery),
+                    Alignment.topCenter,
+                  );
+                  setBat(decrementBat);
                 },
                 child: Image.asset('images/Camp_Icon.png'),
               ),
@@ -169,11 +197,14 @@ class _ChooseLocationState extends State<ChooseLocation> {
               GestureDetector(
                 onTap: () {
                   _chooseloc(
-                      context,
-                      Beach(
-                        battery: battery,
-                      ),
-                      Alignment.center);
+                    context,
+                    Beach(
+                      battery: battery,
+                    ),
+                    Alignment.center,
+                  );
+
+                  setBat(decrementBat);
                 },
                 child: Image.asset('images/Beach_Icon.png'),
               ),
@@ -181,11 +212,14 @@ class _ChooseLocationState extends State<ChooseLocation> {
               GestureDetector(
                 onTap: () {
                   _chooseloc(
-                      context,
-                      School(
-                        battery: battery,
-                      ),
-                      Alignment.bottomCenter);
+                    context,
+                    School(
+                      battery: battery,
+                    ),
+                    Alignment.bottomCenter,
+                  );
+
+                  setBat(decrementBat);
                 },
                 child: Image.asset('images/School_Icon.png'),
               ),
