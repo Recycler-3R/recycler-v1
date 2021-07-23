@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recycler/screens/inputname.dart';
-import 'package:recycler/screens/loginScreen.dart';
+// import 'package:recycler/screens/loginScreen.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -111,7 +111,7 @@ class _HomeState extends State<Home> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 AnimatedImage(),
-                SizedBox(height: height * 0.12),
+                SizedBox(height: height * 0.22),
                 Container(
                   height: height * 0.075,
                   width: width * 0.55,
@@ -189,36 +189,36 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 SizedBox(height: height * 0.03),
-                Container(
-                  height: height * 0.075,
-                  width: width * 0.55,
-                  decoration: new BoxDecoration(
-                      color: const Color(0xFF30D046),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.green.shade300,
-                          spreadRadius: 3,
-                          blurRadius: 2,
-                          offset: Offset(0, 2), // changes position of shadow
-                        ),
-                      ],
-                      borderRadius: BorderRadius.all(Radius.circular(30.0))),
-                  child: TextButton(
-                    style: TextButton.styleFrom(
-                      textStyle: const TextStyle(
-                          fontSize: 16, fontFamily: 'Public Sans'),
-                    ),
-                    child: const Text(
-                      'Auth',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    onPressed: () => {
-                      // for (int i = 0; i < 10; i++) {setColorGrid(i)},
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => AuthApp()))
-                    },
-                  ),
-                ),
+                // Container(
+                //   height: height * 0.075,
+                //   width: width * 0.55,
+                //   decoration: new BoxDecoration(
+                //       color: const Color(0xFF30D046),
+                //       boxShadow: [
+                //         BoxShadow(
+                //           color: Colors.green.shade300,
+                //           spreadRadius: 3,
+                //           blurRadius: 2,
+                //           offset: Offset(0, 2), // changes position of shadow
+                //         ),
+                //       ],
+                //       borderRadius: BorderRadius.all(Radius.circular(30.0))),
+                //   child: TextButton(
+                //     style: TextButton.styleFrom(
+                //       textStyle: const TextStyle(
+                //           fontSize: 16, fontFamily: 'Public Sans'),
+                //     ),
+                //     child: const Text(
+                //       'Auth',
+                //       style: TextStyle(color: Colors.white),
+                //     ),
+                //     onPressed: () => {
+                //       // for (int i = 0; i < 10; i++) {setColorGrid(i)},
+                //       Navigator.push(context,
+                //           MaterialPageRoute(builder: (context) => AuthApp()))
+                //     },
+                //   ),
+                // ),
               ],
             ),
           ),

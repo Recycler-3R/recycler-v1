@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:recycler/others/botnavbar.dart';
 import 'package:recycler/others/sitepage1.dart';
 import 'package:recycler/screens/beach.dart';
 import 'package:recycler/screens/threer.dart';
 import 'package:recycler/others/items.dart';
 
-void _follow(context) {
+void _follow(context, battery) {
   showDialog<String>(
       context: context,
       builder: (BuildContext context) => new AlertDialog(
@@ -90,7 +91,7 @@ void _follow(context) {
                                 },
                                 pageBuilder:
                                     (context, animation, animationTime) {
-                                  return Beach();
+                                  return Beach(battery: battery);
                                 }),
                           ),
                         },
@@ -109,7 +110,12 @@ void _follow(context) {
 }
 
 class CampSite extends StatefulWidget {
-  const CampSite({Key? key}) : super(key: key);
+  CampSite({
+    Key? key,
+    required this.battery,
+  }) : super(key: key);
+
+  String battery;
 
   @override
   _CampSiteState createState() => _CampSiteState();
@@ -149,13 +155,17 @@ class _CampSiteState extends State<CampSite> {
         backgroundColor: Colors.transparent,
       ),
       extendBodyBehindAppBar: true,
-      body: MyStatelessWidget(),
+      body: MyStatelessWidget(
+        battery: widget.battery,
+      ),
+      bottomNavigationBar: BottomNavbar(battery: widget.battery),
     );
   }
 }
 
 class MyStatelessWidget extends StatelessWidget {
-  MyStatelessWidget({Key? key}) : super(key: key);
+  MyStatelessWidget({Key? key, required this.battery}) : super(key: key);
+  String battery;
 
   @override
   Widget build(BuildContext context) {
@@ -223,15 +233,15 @@ class MyStatelessWidget extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ThreeR(item: item[3])))
+                              builder: (context) => ThreeR(item: item[6])))
                     },
                     child: Container(
                       margin: EdgeInsets.fromLTRB(20, 50, 10, 10),
                       height: height * 0.07,
                       width: width * 0.07,
                       child: Hero(
-                        tag: item[3],
-                        child: Image.asset('images/items/' + item[3] + '.png'),
+                        tag: item[6],
+                        child: Image.asset('images/items/' + item[6] + '.png'),
                       ),
                     ),
                   ),
@@ -244,14 +254,14 @@ class MyStatelessWidget extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ThreeR(item: item[4])))
+                              builder: (context) => ThreeR(item: item[7])))
                     },
                     child: Container(
                       height: height * 0.18,
                       width: width * 0.18,
                       child: Hero(
-                        tag: item[4],
-                        child: Image.asset('images/items/' + item[4] + '.png'),
+                        tag: item[7],
+                        child: Image.asset('images/items/' + item[7] + '.png'),
                       ),
                     ),
                   ),
@@ -264,14 +274,14 @@ class MyStatelessWidget extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ThreeR(item: item[2])))
+                              builder: (context) => ThreeR(item: item[8])))
                     },
                     child: Container(
                       height: height * 0.18,
                       width: width * 0.18,
                       child: Hero(
-                        tag: item[4],
-                        child: Image.asset('images/items/' + item[2] + '.png'),
+                        tag: item[8],
+                        child: Image.asset('images/items/' + item[8] + '.png'),
                       ),
                     ),
                   ),
@@ -301,15 +311,15 @@ class MyStatelessWidget extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ThreeR(item: item[5])))
+                              builder: (context) => ThreeR(item: item[9])))
                     },
                     child: Container(
                       margin: EdgeInsets.fromLTRB(20, 50, 10, 10),
                       height: height * 0.07,
                       width: width * 0.07,
                       child: Hero(
-                        tag: item[5],
-                        child: Image.asset('images/items/' + item[5] + '.png'),
+                        tag: item[9],
+                        child: Image.asset('images/items/' + item[9] + '.png'),
                       ),
                     ),
                   ),
@@ -322,14 +332,14 @@ class MyStatelessWidget extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ThreeR(item: item[6])))
+                              builder: (context) => ThreeR(item: item[10])))
                     },
                     child: Container(
                       height: height * 0.05,
                       width: width * 0.05,
                       child: Hero(
-                        tag: item[6],
-                        child: Image.asset('images/items/' + item[6] + '.png'),
+                        tag: item[10],
+                        child: Image.asset('images/items/' + item[10] + '.png'),
                       ),
                     ),
                   ),
@@ -342,14 +352,14 @@ class MyStatelessWidget extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ThreeR(item: item[8])))
+                              builder: (context) => ThreeR(item: item[11])))
                     },
                     child: Container(
                       height: height * 0.05,
                       width: width * 0.05,
                       child: Hero(
-                        tag: item[8],
-                        child: Image.asset('images/items/' + item[8] + '.png'),
+                        tag: item[11],
+                        child: Image.asset('images/items/' + item[11] + '.png'),
                       ),
                     ),
                   ),
@@ -379,15 +389,15 @@ class MyStatelessWidget extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ThreeR(item: item[9])))
+                              builder: (context) => ThreeR(item: item[12])))
                     },
                     child: Container(
                       margin: EdgeInsets.fromLTRB(20, 50, 10, 10),
                       height: height * 0.09,
                       width: width * 0.09,
                       child: Hero(
-                        tag: item[9],
-                        child: Image.asset('images/items/' + item[9] + '.png'),
+                        tag: item[12],
+                        child: Image.asset('images/items/' + item[12] + '.png'),
                       ),
                     ),
                   ),
@@ -400,14 +410,14 @@ class MyStatelessWidget extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ThreeR(item: item[3])))
+                              builder: (context) => ThreeR(item: item[13])))
                     },
                     child: Container(
                       height: height * 0.12,
                       width: width * 0.12,
                       child: Hero(
-                        tag: item[3],
-                        child: Image.asset('images/items/' + item[3] + '.png'),
+                        tag: item[13],
+                        child: Image.asset('images/items/' + item[13] + '.png'),
                       ),
                     ),
                   ),
@@ -420,14 +430,14 @@ class MyStatelessWidget extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => ThreeR(item: item[8])))
+                              builder: (context) => ThreeR(item: item[14])))
                     },
                     child: Container(
                       height: height * 0.18,
                       width: width * 0.18,
                       child: Hero(
-                        tag: item[8],
-                        child: Image.asset('images/items/' + item[8] + '.png'),
+                        tag: item[14],
+                        child: Image.asset('images/items/' + item[14] + '.png'),
                       ),
                     ),
                   ),
@@ -453,7 +463,7 @@ class MyStatelessWidget extends StatelessWidget {
               height: height * 0.2,
               width: width,
               child: ElevatedButton(
-                onPressed: () => {_follow(context)},
+                onPressed: () => {_follow(context, battery)},
                 child: Text('FINISH?'),
               ),
             ),
@@ -518,12 +528,6 @@ class _AnimatedImageState extends State<AnimatedImage>
               setState(() {
                 padding = EdgeInsets.all(18.0);
                 message = 'Time to start cleaning up!';
-              });
-            },
-            onDoubleTap: () {
-              setState(() {
-                padding = EdgeInsets.all(38.0);
-                message = 'YEEEY!';
               });
             },
             child: Stack(

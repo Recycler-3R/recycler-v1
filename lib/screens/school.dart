@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recycler/others/botnavbar.dart';
 import 'package:recycler/others/items.dart';
 import 'package:recycler/others/sitepage1.dart';
 import 'package:recycler/screens/home.dart';
@@ -82,8 +83,11 @@ void _follow(context) {
 }
 
 class School extends StatefulWidget {
-  const School({Key? key}) : super(key: key);
-
+  School({
+    Key? key,
+    required this.battery,
+  }) : super(key: key);
+  String battery;
   @override
   _SchoolState createState() => _SchoolState();
 }
@@ -123,6 +127,7 @@ class _SchoolState extends State<School> {
       ),
       extendBodyBehindAppBar: true,
       body: const MyStatelessWidget(),
+      bottomNavigationBar: BottomNavbar(battery: widget.battery),
     );
   }
 }
@@ -151,14 +156,6 @@ class MyStatelessWidget extends StatelessWidget {
             item2: item[4],
             item3: item[5],
             location: loc1),
-        SitePage(
-            top: 0.76,
-            left: 0.64,
-            right: 0.98,
-            item1: item[6],
-            item2: item[7],
-            item3: item[8],
-            location: loc2),
         Container(
           height: height,
           width: width,
@@ -189,6 +186,14 @@ class MyStatelessWidget extends StatelessWidget {
                 alignment: Alignment.center),
           ),
         ),
+        SitePage(
+            top: 0.76,
+            left: 0.64,
+            right: 0.98,
+            item1: item[6],
+            item2: item[7],
+            item3: item[8],
+            location: loc2),
         Container(
           height: height,
           width: width,

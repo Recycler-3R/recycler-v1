@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:recycler/others/botnavbar.dart';
 import 'package:recycler/others/sitepage1.dart';
 import 'package:recycler/screens/school.dart';
 import 'package:recycler/others/items.dart';
 
-void _follow(context) {
+void _follow(context, battery) {
   showDialog<String>(
       context: context,
       builder: (BuildContext context) => new AlertDialog(
@@ -89,7 +90,9 @@ void _follow(context) {
                                 },
                                 pageBuilder:
                                     (context, animation, animationTime) {
-                                  return School();
+                                  return School(
+                                    battery: battery,
+                                  );
                                 }),
                           ),
                         },
@@ -108,8 +111,12 @@ void _follow(context) {
 }
 
 class Beach extends StatefulWidget {
-  const Beach({Key? key}) : super(key: key);
+  Beach({
+    Key? key,
+    required this.battery,
+  }) : super(key: key);
 
+  String battery;
   @override
   _BeachState createState() => _BeachState();
 }
@@ -148,14 +155,20 @@ class _BeachState extends State<Beach> {
         backgroundColor: Colors.transparent,
       ),
       extendBodyBehindAppBar: true,
-      body: const MyStatelessWidget(),
+      body: MyStatelessWidget(
+        battery: widget.battery,
+      ),
+      bottomNavigationBar: BottomNavbar(battery: widget.battery),
     );
   }
 }
 
 class MyStatelessWidget extends StatelessWidget {
-  const MyStatelessWidget({Key? key}) : super(key: key);
-
+  MyStatelessWidget({
+    Key? key,
+    required this.battery,
+  }) : super(key: key);
+  String battery;
   @override
   Widget build(BuildContext context) {
     final PageController controller = PageController(initialPage: 0);
@@ -176,14 +189,6 @@ class MyStatelessWidget extends StatelessWidget {
             item2: item[4],
             item3: item[5],
             location: loc1),
-        SitePage(
-            top: 0.76,
-            left: 0.64,
-            right: 0.98,
-            item1: item[6],
-            item2: item[7],
-            item3: item[8],
-            location: loc2),
         Container(
           height: height,
           width: width,
@@ -214,6 +219,14 @@ class MyStatelessWidget extends StatelessWidget {
                 alignment: Alignment.center),
           ),
         ),
+        SitePage(
+            top: 0.76,
+            left: 0.64,
+            right: 0.98,
+            item1: item[6],
+            item2: item[7],
+            item3: item[8],
+            location: loc2),
         Container(
           height: height,
           width: width,
@@ -251,7 +264,7 @@ class MyStatelessWidget extends StatelessWidget {
               height: height * 0.2,
               width: width,
               child: ElevatedButton(
-                onPressed: () => {_follow(context)},
+                onPressed: () => {_follow(context, battery)},
                 child: Text('FINISH?'),
               ),
             ),

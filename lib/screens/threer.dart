@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recycler/screens/threer/rslidebutton.dart';
+import 'package:recycler/others/threer/rslidebutton.dart';
 
 class ThreeR extends StatefulWidget {
   final item;

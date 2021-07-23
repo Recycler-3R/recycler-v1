@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:recycler/screens/threer/fail.dart';
-import 'package:recycler/screens/threer/success.dart';
+import 'package:recycler/others/threer/fail.dart';
+import 'package:recycler/others/threer/success.dart';
 
 class RSlideButton extends StatefulWidget {
   final String buttonName;
