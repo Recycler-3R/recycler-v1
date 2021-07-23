@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:recycler/screens/threer/fail.dart';
-import 'package:recycler/screens/threer/success.dart';
+import 'package:recycler/others/threer/fail.dart';
+import 'package:recycler/others/threer/success.dart';
 
 class RSlideButton extends StatefulWidget {
   final String buttonName;
@@ -36,9 +36,13 @@ class _RSlideButtonState extends State<RSlideButton> {
               MaterialPageRoute(
                   builder: (context) => SuccessR(
                         finalR: resultRe,
+                        item: widget.item,
                       )))
-          : Navigator.push(context,
-              MaterialPageRoute(builder: (context) => FailR(finalR: resultRe)));
+          : Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      FailR(finalR: resultRe, item: widget.item)));
     });
   }
 
@@ -77,7 +81,11 @@ class _RSlideButtonState extends State<RSlideButton> {
               child: Text(
                 widget.buttonName,
                 style: TextStyle(
-                    fontFamily: 'AutourOne', fontSize: 30, color: Colors.black),
+                  fontFamily: 'AutourOne',
+                  fontSize: 30,
+                  color: Colors.black,
+                  decoration: TextDecoration.none,
+                ),
               ),
             ),
           ]),
@@ -111,9 +119,11 @@ class _RSlideButtonState extends State<RSlideButton> {
                   child: Text(
                     'R',
                     style: TextStyle(
-                        fontFamily: 'AutourOne',
-                        fontSize: 30,
-                        color: Colors.white),
+                      fontFamily: 'AutourOne',
+                      fontSize: 30,
+                      color: Colors.white,
+                      decoration: TextDecoration.none,
+                    ),
                   ),
                 ),
               ),

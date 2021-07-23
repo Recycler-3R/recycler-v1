@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recycler/screens/threer/rslidebutton.dart';
-// import 'package:recycler/strings/items.dart';
+import 'package:recycler/others/threer/rslidebutton.dart';
 
 class ThreeR extends StatefulWidget {
   final item;
@@ -19,11 +18,24 @@ class _ThreeRState extends State<ThreeR> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(scaffoldBackgroundColor: Color(0xFFFFFFFF)),
-      home: Scaffold(
-        extendBodyBehindAppBar: true,
-        body: SafeArea(
+    final double height = MediaQuery.of(context).size.height;
+    final double width = MediaQuery.of(context).size.width;
+
+    return Scaffold(
+      body: SafeArea(
+        child: Container(
+          height: height,
+          width: width,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: <Color>[
+                Colors.white,
+                Colors.pink.shade50,
+              ],
+            ),
+          ),
           child: Center(
             child: Column(
               children: [
@@ -52,12 +64,31 @@ class _ThreeRState extends State<ThreeR> {
                         ),
                       ],
                     ),
-                    child: Hero(
-                      tag: widget.item,
-                      child: Image.asset(
-                        'images/${widget.item}.png',
-                        fit: BoxFit.fitHeight,
-                      ),
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Positioned(
+                          child: Container(
+                            height: height * 0.25,
+                            child: Hero(
+                              tag: widget.item,
+                              child: Image.asset(
+                                'images/items/${widget.item}.png',
+                                fit: BoxFit.fitHeight,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          top: 0,
+                          right: 2,
+                          child: Container(
+                            child: IconButton(
+                                onPressed: () => {Navigator.pop(context)},
+                                icon: Icon(Icons.close_rounded)),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -88,7 +119,6 @@ class _ThreeRState extends State<ThreeR> {
     );
   }
 }
-
 /*
 Stack(
                   alignment: Alignment.center,
@@ -250,4 +280,4 @@ Stack(
 //                       ],
 //                     ),
 //                   ],
-//                 ),
+//                 )

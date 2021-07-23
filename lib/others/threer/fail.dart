@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:recycler/Minigame_Reduce/Reduce_Game.dart';
-import 'package:recycler/screens/threer.dart';
-import 'package:recycler/strings/dialogs.dart';
+import 'package:recycler/others/dialogs.dart';
 
-class SuccessR extends StatelessWidget {
+class FailR extends StatelessWidget {
   final String finalR;
-
-  const SuccessR({
+  final String item;
+  const FailR({
     Key? key,
     required this.finalR,
+    required this.item,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    String successMessage =
-        resultDialogs['ps_' + finalR + 'correct'].toString();
-    String item = '';
+    String failMessage = resultDialogs['ps_' + finalR + 'wrong'].toString();
     final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
     return SafeArea(
@@ -39,7 +36,7 @@ class SuccessR extends StatelessWidget {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(25),
                     image: DecorationImage(
-                      image: AssetImage("images/sampleitem.png"),
+                      image: AssetImage("images/items/" + item + ".png"),
                     ),
                     color: Color(0xFF3DD598),
                     boxShadow: [
@@ -74,7 +71,7 @@ class SuccessR extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(top: 15.0),
                       child: Text(
-                        'GREAT!',
+                        'OOPS!',
                         style: TextStyle(
                             fontFamily: 'AutourOne',
                             fontSize: 18,
@@ -89,7 +86,7 @@ class SuccessR extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
                       child: Text(
-                        successMessage,
+                        failMessage,
                         textAlign: TextAlign.justify,
                         style: TextStyle(
                             fontFamily: 'AutourOne',
@@ -99,47 +96,19 @@ class SuccessR extends StatelessWidget {
                       ),
                     ),
                     Spacer(),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Spacer(),
-                        ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => ThreeR(item: item)));
-                          },
-                          child: Container(
-                            height: 20,
-                            width: 100,
-                            alignment: Alignment.center,
-                            child: Expanded(
-                              child: Text('Back'),
-                            ),
-                          ),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Container(
+                        height: 20,
+                        width: 50,
+                        alignment: Alignment.center,
+                        child: Expanded(
+                          child: Text('Back'),
                         ),
-                        Spacer(),
-                        ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Reduce()));
-                          },
-                          child: Container(
-                            height: 20,
-                            width: 100,
-                            alignment: Alignment.center,
-                            child: Expanded(
-                              child: Text('Play Game'),
-                            ),
-                          ),
-                        ),
-                        Spacer(),
-                      ],
+                      ),
                     ),
-                    Spacer(),
                   ],
                 ),
               ),

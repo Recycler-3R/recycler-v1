@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recycler/screens/home.dart';
-import 'package:recycler/screens/camp.dart';
+import 'package:recycler/screens/chooseloc.dart';
 
 class InputName extends StatefulWidget {
   @override
@@ -18,7 +17,7 @@ class _InputNameState extends State<InputName> {
           width: width,
           decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("images/2ndpoint.png"),
+                image: AssetImage("images/backgrounds/2ndpoint.png"),
                 fit: BoxFit.fitWidth,
                 alignment: Alignment.center),
           ),
@@ -35,7 +34,7 @@ class _InputNameState extends State<InputName> {
                       fontSize: 45,
                       fontWeight: FontWeight.bold,
                       fontFamily: 'CooperBlack',
-                      color: Colors.black,
+                      color: Color(0xFF212121),
                     ),
                   ),
                 ),
@@ -48,7 +47,7 @@ class _InputNameState extends State<InputName> {
                     fontSize: 40,
                     fontWeight: FontWeight.bold,
                     fontFamily: 'CooperBlack',
-                    color: Colors.black,
+                    color: Color(0xFF212121),
                   ),
                 ),
               ),
@@ -59,38 +58,6 @@ class _InputNameState extends State<InputName> {
                     border: UnderlineInputBorder(),
                     labelText: 'Enter your name',
                   ),
-                ),
-              ),
-              SizedBox(
-                height: 50,
-              ),
-              Container(
-                height: 50,
-                width: 200,
-                decoration: new BoxDecoration(
-                    color: const Color(0xFF9378FF),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.purple.shade200,
-                        spreadRadius: 3,
-                        blurRadius: 10,
-                        offset: Offset(0, 2), // changes position of shadow
-                      ),
-                    ],
-                    borderRadius: BorderRadius.all(Radius.circular(30.0))),
-                child: TextButton(
-                  style: TextButton.styleFrom(
-                    textStyle: const TextStyle(
-                        fontSize: 16, fontFamily: 'Public Sans'),
-                  ),
-                  child: const Text(
-                    'Back',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  onPressed: () => {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Home()))
-                  },
                 ),
               ),
               SizedBox(
@@ -116,13 +83,58 @@ class _InputNameState extends State<InputName> {
                         fontSize: 16, fontFamily: 'Public Sans'),
                   ),
                   child: const Text(
-                    'Continue',
+                    'START',
                     style: TextStyle(color: Colors.white),
                   ),
                   onPressed: () => {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => CampSite()))
+                    Navigator.push(
+                      context,
+                      PageRouteBuilder(
+                          transitionDuration: Duration(milliseconds: 1000),
+                          transitionsBuilder:
+                              (context, animation, animationTime, child) {
+                            animation = CurvedAnimation(
+                                parent: animation,
+                                curve: Curves.easeInToLinear);
+                            return FadeTransition(
+                              opacity: animation,
+                              child: child,
+                            );
+                          },
+                          pageBuilder: (context, animation, animationTime) {
+                            return ChooseLocation();
+                          }),
+                    ),
                   },
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                height: 50,
+                width: 200,
+                decoration: new BoxDecoration(
+                    color: const Color(0xFF9378FF),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.purple.shade200,
+                        spreadRadius: 3,
+                        blurRadius: 10,
+                        offset: Offset(0, 2), // changes position of shadow
+                      ),
+                    ],
+                    borderRadius: BorderRadius.all(Radius.circular(30.0))),
+                child: TextButton(
+                  style: TextButton.styleFrom(
+                    textStyle: const TextStyle(
+                        fontSize: 16, fontFamily: 'Public Sans'),
+                  ),
+                  child: const Text(
+                    'Back',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  onPressed: () => {Navigator.pop(context)},
                 ),
               ),
               SizedBox(
