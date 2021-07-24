@@ -23,34 +23,44 @@ class FailR extends StatelessWidget {
             gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
-                colors: <Color>[Color(0xFFACCBEE), Colors.white])),
+                colors: <Color>[
+              Colors.redAccent.shade100,
+              Colors.white,
+            ])),
         child: Center(
           child: Column(
             children: [
-              SizedBox(
-                height: height * 0.05,
-              ),
-              Container(
-                height: height * 0.50,
-                width: width * 0.8,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(25),
-                    image: DecorationImage(
-                      image: AssetImage("images/items/" + item + ".png"),
+              Spacer(),
+              Stack(
+                alignment: Alignment.center,
+                children: [
+                  Container(
+                    height: height * 0.40,
+                    width: width * 0.8,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(25),
+                        color: Color(0xFF3DD598),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.shade200,
+                            spreadRadius: 1,
+                            blurRadius: 2,
+                            offset: Offset(0, 1), // changes position of shadow
+                          ),
+                        ]),
+                  ),
+                  Container(
+                    height: height * 0.30,
+                    width: width * 0.6,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage("images/items/" + item + ".png"),
+                          fit: BoxFit.contain),
                     ),
-                    color: Color(0xFF3DD598),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.shade200,
-                        spreadRadius: 1,
-                        blurRadius: 2,
-                        offset: Offset(0, 1), // changes position of shadow
-                      ),
-                    ]),
+                  ),
+                ],
               ),
-              SizedBox(
-                height: height * 0.025,
-              ),
+              Spacer(),
               Container(
                 height: height * 0.35,
                 width: width * 0.8,
@@ -96,22 +106,32 @@ class FailR extends StatelessWidget {
                       ),
                     ),
                     Spacer(),
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: Container(
-                        height: 20,
-                        width: 50,
-                        alignment: Alignment.center,
-                        child: Expanded(
-                          child: Text('Back'),
+                    Container(
+                      width: 150,
+                      decoration: new BoxDecoration(
+                          color: const Color(0xFF9378FF),
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(20.0))),
+                      child: TextButton(
+                        style: TextButton.styleFrom(
+                          textStyle: const TextStyle(fontSize: 16),
+                        ),
+                        onPressed: () => {
+                          Navigator.pop(
+                            context,
+                          ),
+                        },
+                        child: const Text(
+                          'Back',
+                          style: TextStyle(color: Colors.white),
                         ),
                       ),
                     ),
+                    Spacer(),
                   ],
                 ),
               ),
+              Spacer(),
             ],
           ),
         ),
