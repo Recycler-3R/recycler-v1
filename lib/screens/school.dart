@@ -12,7 +12,7 @@ void _follow(context) {
               "Congratulations!",
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 18.0,
+                fontSize: 20.0,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Public Sans',
               ),
@@ -28,31 +28,30 @@ void _follow(context) {
               child: new Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
-                  // dialog centre
-                  new Expanded(
-                      child: new Container(
+                  Container(
                     child: Text(
                       "You have finished Level 3:",
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 16.0,
+                        fontSize: 18.0,
                         fontFamily: 'helvetica_neue_light',
                       ),
                     ),
-                  )),
-                  SizedBox(height: 10),
-                  new Expanded(
-                      child: new Container(
+                  ),
+                  SizedBox(height: 15),
+                  Container(
+                    width: 25,
                     child: Text(
                       " School ",
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 16.0,
+                        fontSize: 24.0,
                         fontFamily: 'helvetica_neue_light',
                       ),
                     ),
-                  )),
-                  SizedBox(height: 10),
+                  ),
+                  SizedBox(height: 25),
                   // dialog bottom
                   new Expanded(
                     child: new Container(
@@ -69,7 +68,7 @@ void _follow(context) {
                               MaterialPageRoute(builder: (context) => Home()))
                         },
                         child: const Text(
-                          'Next Level',
+                          'Home',
                           style: TextStyle(color: Colors.white),
                         ),
                       ),
@@ -237,13 +236,39 @@ class MyStatelessWidget extends StatelessWidget {
               ),
             ),
             Positioned(
-              top: height * 0.3,
-              child: Container(
-                height: height * 0.2,
-                width: width,
-                child: ElevatedButton(
-                  onPressed: () => {_follow(context)},
-                  child: Text('FINISH?'),
+              top: height * 0.45,
+              left: width * 0.13,
+              child: GestureDetector(
+                onTap: () => {_follow(context)},
+                child: Container(
+                  height: height * 0.12,
+                  width: width * 0.75,
+                  decoration: BoxDecoration(
+                    border: Border.all(width: 3, color: Colors.transparent),
+                    borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                    color: Color(0xFF9378FF).withOpacity(0.8),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.deepPurpleAccent,
+                        spreadRadius: 1,
+                        blurRadius: 5,
+                        offset: Offset(0, 2), // changes position of shadow
+                      ),
+                    ],
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(20.0),
+                    child: Text(
+                      'You have completed the level!',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: 'AutourOne',
+                        fontWeight: FontWeight.w400,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ),

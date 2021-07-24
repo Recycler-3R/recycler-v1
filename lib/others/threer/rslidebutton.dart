@@ -23,26 +23,80 @@ class _RSlideButtonState extends State<RSlideButton> {
   Color _color = Color(0xFF3DD598);
   Color _vcolor = Color(0xFF9378FF);
   double _swipe = 0;
-  bool _notChanged = true;
   BorderRadiusGeometry _borderRadius = BorderRadius.circular(40);
 
   Future<void> delayScreen(bool isSuccess) {
     // Imagine that this function is fetching user info from another service or database.
-    return Future.delayed(const Duration(milliseconds: 700), () {
+    return Future.delayed(const Duration(milliseconds: 500), () {
       final String resultRe = 'r' + widget.buttonName;
       isSuccess
           ? Navigator.push(
               context,
-              MaterialPageRoute(
-                  builder: (context) => SuccessR(
-                        finalR: resultRe,
-                        item: widget.item,
-                      )))
+              PageRouteBuilder(
+                  transitionDuration: Duration(milliseconds: 300),
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) {
+                    var curve = Curves.elasticOut;
+                    //var curve2 = Curves.elasticIn;
+                    late final Animation<Offset> _offsetAnimation =
+                        Tween<Offset>(
+                      begin: Offset(1.0, 0.0),
+                      end: Offset.zero,
+                    ).animate(CurvedAnimation(
+                      //  reverseCurve: curve2,
+                      parent: animation,
+                      curve: curve,
+                    ));
+                    return SlideTransition(
+                      position: _offsetAnimation,
+                      child: child,
+                    );
+                  },
+                  pageBuilder: (context, animation, animationTime) {
+                    return SuccessR(
+                      finalR: resultRe,
+                      item: widget.item,
+                    );
+                  }),
+            )
           : Navigator.push(
               context,
-              MaterialPageRoute(
-                  builder: (context) =>
-                      FailR(finalR: resultRe, item: widget.item)));
+              PageRouteBuilder(
+                  transitionDuration: Duration(milliseconds: 300),
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) {
+                    var curve = Curves.elasticOut;
+                    //var curve2 = Curves.elasticIn;
+                    late final Animation<Offset> _offsetAnimation =
+                        Tween<Offset>(
+                      begin: Offset(1.0, 0.0),
+                      end: Offset.zero,
+                    ).animate(CurvedAnimation(
+                      //  reverseCurve: curve2,
+                      parent: animation,
+                      curve: curve,
+                    ));
+                    return SlideTransition(
+                      position: _offsetAnimation,
+                      child: child,
+                    );
+                  },
+                  pageBuilder: (context, animation, animationTime) {
+                    return FailR(
+                      finalR: resultRe,
+                      item: widget.item,
+                    );
+                  }),
+            );
+    });
+  }
+
+  Future<void> delayButton() {
+    // Imagine that this function is fetching user info from another service or database.
+    return Future.delayed(const Duration(milliseconds: 200), () {
+      setState(() {
+        _swipe = 0;
+      });
     });
   }
 
@@ -90,19 +144,18 @@ class _RSlideButtonState extends State<RSlideButton> {
             ),
           ]),
           AnimatedPositioned(
-            duration: Duration(milliseconds: 100),
+            duration: Duration(milliseconds: 500),
             left: _swipe,
             curve: Curves.fastLinearToSlowEaseIn,
             child: GestureDetector(
               onHorizontalDragStart: (DragStartDetails details) {
                 setState(() {
-                  _color =
-                      _notChanged ? Color(0xFF3DD598) : Colors.purpleAccent;
-                  _vcolor =
-                      _notChanged ? Color(0xFF9378FF) : Colors.deepPurpleAccent;
-                  _swipe = _notChanged ? 0 : 130;
-                  _notChanged = _notChanged ? false : true;
-
+                  _color = widget.isSuccess ? Colors.green : Colors.redAccent;
+                  _vcolor = widget.isSuccess
+                      ? Colors.greenAccent.shade400
+                      : Colors.redAccent.shade400;
+                  _swipe = 130;
+                  delayButton();
                   delayScreen(widget.isSuccess);
                 });
               },

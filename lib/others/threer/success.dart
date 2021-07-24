@@ -24,36 +24,46 @@ class SuccessR extends StatelessWidget {
         width: width,
         decoration: BoxDecoration(
             gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: <Color>[Color(0xFFACCBEE), Colors.white])),
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: <Color>[
+              Colors.greenAccent.shade100,
+              Colors.white,
+            ])),
         child: Center(
           child: Column(
             children: [
-              SizedBox(
-                height: height * 0.05,
-              ),
-              Container(
-                height: height * 0.50,
-                width: width * 0.8,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(25),
-                    image: DecorationImage(
-                      image: AssetImage("images/items/" + item + ".png"),
+              Spacer(),
+              Stack(
+                alignment: Alignment.center,
+                children: [
+                  Container(
+                    height: height * 0.40,
+                    width: width * 0.8,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(25),
+                        color: Color(0xFF3DD598),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.shade200,
+                            spreadRadius: 1,
+                            blurRadius: 2,
+                            offset: Offset(0, 1), // changes position of shadow
+                          ),
+                        ]),
+                  ),
+                  Container(
+                    height: height * 0.30,
+                    width: width * 0.6,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage("images/items/" + item + ".png"),
+                          fit: BoxFit.contain),
                     ),
-                    color: Color(0xFF3DD598),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.shade200,
-                        spreadRadius: 1,
-                        blurRadius: 2,
-                        offset: Offset(0, 1), // changes position of shadow
-                      ),
-                    ]),
+                  ),
+                ],
               ),
-              SizedBox(
-                height: height * 0.025,
-              ),
+              Spacer(),
               Container(
                 height: height * 0.35,
                 width: width * 0.8,
@@ -99,37 +109,54 @@ class SuccessR extends StatelessWidget {
                       ),
                     ),
                     Spacer(),
+                    Spacer(),
+                    Spacer(),
+                    Spacer(),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Spacer(),
-                        ElevatedButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          child: Container(
-                            height: 20,
-                            width: 100,
-                            alignment: Alignment.center,
-                            child: Expanded(
-                              child: Text('Back'),
+                        Container(
+                          width: 120,
+                          decoration: new BoxDecoration(
+                              color: const Color(0xFF9378FF),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20.0))),
+                          child: TextButton(
+                            style: TextButton.styleFrom(
+                              textStyle: const TextStyle(fontSize: 16),
+                            ),
+                            onPressed: () => {
+                              Navigator.pop(
+                                context,
+                              ),
+                            },
+                            child: const Text(
+                              'Back',
+                              style: TextStyle(color: Colors.white),
                             ),
                           ),
                         ),
                         Spacer(),
-                        ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Reduce()));
-                          },
-                          child: Container(
-                            height: 20,
-                            width: 100,
-                            alignment: Alignment.center,
-                            child: Expanded(
-                              child: Text('Play Game'),
+                        Container(
+                          width: 120,
+                          decoration: new BoxDecoration(
+                              color: const Color(0xFF9378FF),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20.0))),
+                          child: TextButton(
+                            style: TextButton.styleFrom(
+                              textStyle: const TextStyle(fontSize: 16),
+                            ),
+                            onPressed: () => {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Reduce())),
+                            },
+                            child: const Text(
+                              'Play Game',
+                              style: TextStyle(color: Colors.white),
                             ),
                           ),
                         ),
@@ -140,6 +167,7 @@ class SuccessR extends StatelessWidget {
                   ],
                 ),
               ),
+              Spacer(),
             ],
           ),
         ),

@@ -13,7 +13,7 @@ void _follow(context, battery) {
               "Congratulations!",
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 18.0,
+                fontSize: 20.0,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Public Sans',
               ),
@@ -30,75 +30,68 @@ void _follow(context, battery) {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
                   // dialog centre
-                  new Expanded(
-                      child: new Container(
+                  Container(
                     child: Text(
                       "You have finished Level 1:",
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 16.0,
+                        fontSize: 18.0,
                         fontFamily: 'helvetica_neue_light',
                       ),
                     ),
-                  )),
-                  SizedBox(height: 10),
-                  new Expanded(
-                      child: new Container(
+                  ),
+                  SizedBox(height: 15),
+                  Container(
+                    width: 25,
                     child: Text(
                       " Camp Site ",
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 16.0,
+                        fontSize: 24.0,
                         fontFamily: 'helvetica_neue_light',
                       ),
                     ),
-                  )),
-                  SizedBox(height: 10),
+                  ),
+                  SizedBox(height: 25),
                   // dialog bottom
-                  new Expanded(
-                    child: new Container(
-                      decoration: new BoxDecoration(
-                          color: const Color(0xFF9378FF),
-                          borderRadius:
-                              BorderRadius.all(Radius.circular(10.0))),
-                      child: TextButton(
-                        style: TextButton.styleFrom(
-                          textStyle: const TextStyle(fontSize: 16),
-                        ),
-                        onPressed: () => {
-                          Navigator.push(
-                            context,
-                            PageRouteBuilder(
-                                transitionDuration: Duration(milliseconds: 500),
-                                transitionsBuilder: (context, animation,
-                                    secondaryAnimation, child) {
-                                  var begin = Offset(1.0, 0.0);
-                                  var end = Offset.zero;
-                                  var curve = Curves.fastOutSlowIn;
-                                  var curve2 = Curves.fastLinearToSlowEaseIn;
+                  Container(
+                    decoration: new BoxDecoration(
+                        color: const Color(0xFF9378FF),
+                        borderRadius: BorderRadius.all(Radius.circular(20.0))),
+                    child: TextButton(
+                      style: TextButton.styleFrom(
+                        textStyle: const TextStyle(fontSize: 16),
+                      ),
+                      onPressed: () => {
+                        Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                              transitionDuration: Duration(milliseconds: 1500),
+                              transitionsBuilder: (context, animation,
+                                  secondaryAnimation, child) {
+                                var curve = Curves.easeInToLinear;
+                                var curve2 = Curves.easeOut;
 
-                                  var tween = Tween(begin: begin, end: end);
-                                  var curvedAnimation = CurvedAnimation(
-                                    reverseCurve: curve2,
-                                    parent: animation,
-                                    curve: curve,
-                                  );
+                                var curvedAnimation = CurvedAnimation(
+                                  reverseCurve: curve2,
+                                  parent: animation,
+                                  curve: curve,
+                                );
 
-                                  return SlideTransition(
-                                    position: tween.animate(curvedAnimation),
-                                    child: child,
-                                  );
-                                },
-                                pageBuilder:
-                                    (context, animation, animationTime) {
-                                  return Beach(battery: battery);
-                                }),
-                          ),
-                        },
-                        child: const Text(
-                          'Next Level',
-                          style: TextStyle(color: Colors.white),
+                                return FadeTransition(
+                                  opacity: curvedAnimation,
+                                  child: child,
+                                );
+                              },
+                              pageBuilder: (context, animation, animationTime) {
+                                return Beach(battery: battery);
+                              }),
                         ),
+                      },
+                      child: const Text(
+                        'Next Level',
+                        style: TextStyle(color: Colors.white),
                       ),
                     ),
                   ),
@@ -155,7 +148,7 @@ class _CampSiteState extends State<CampSite> {
         backgroundColor: Colors.transparent,
       ),
       extendBodyBehindAppBar: true,
-      body: MyStatelessWidget(
+      body: MyStatefulWidget(
         battery: widget.battery,
       ),
       bottomNavigationBar: BottomNavbar(battery: widget.battery),
@@ -163,13 +156,19 @@ class _CampSiteState extends State<CampSite> {
   }
 }
 
-class MyStatelessWidget extends StatelessWidget {
-  MyStatelessWidget({Key? key, required this.battery}) : super(key: key);
+class MyStatefulWidget extends StatefulWidget {
+  MyStatefulWidget({Key? key, required this.battery}) : super(key: key);
   String battery;
 
   @override
+  _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
+}
+
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  @override
   Widget build(BuildContext context) {
     final PageController controller = PageController(initialPage: 0);
+    int pageChanged = 0;
     final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
     final String loc1 = 'camp1.png';
@@ -177,7 +176,14 @@ class MyStatelessWidget extends StatelessWidget {
 
     return PageView(
       scrollDirection: Axis.horizontal,
+      //physics: NeverScrollableScrollPhysics(),
       controller: controller,
+      onPageChanged: (index) {
+        setState(() {
+          pageChanged = index;
+        });
+        print(pageChanged);
+      },
       children: <Widget>[
         Container(
           height: height,
@@ -190,7 +196,14 @@ class MyStatelessWidget extends StatelessWidget {
           ),
           child: Stack(
             children: [
-              AnimatedImage(),
+              GestureDetector(
+                onDoubleTap: () {
+                  controller.animateToPage(1,
+                      duration: Duration(milliseconds: 550),
+                      curve: Curves.easeInToLinear);
+                },
+                child: AnimatedImage(),
+              ),
             ],
           ),
         ),
@@ -257,8 +270,8 @@ class MyStatelessWidget extends StatelessWidget {
                               builder: (context) => ThreeR(item: item[7])))
                     },
                     child: Container(
-                      height: height * 0.18,
-                      width: width * 0.18,
+                      height: height * 0.12,
+                      width: width * 0.12,
                       child: Hero(
                         tag: item[7],
                         child: Image.asset('images/items/' + item[7] + '.png'),
@@ -277,8 +290,8 @@ class MyStatelessWidget extends StatelessWidget {
                               builder: (context) => ThreeR(item: item[8])))
                     },
                     child: Container(
-                      height: height * 0.18,
-                      width: width * 0.18,
+                      height: height * 0.08,
+                      width: width * 0.08,
                       child: Hero(
                         tag: item[8],
                         child: Image.asset('images/items/' + item[8] + '.png'),
@@ -458,13 +471,39 @@ class MyStatelessWidget extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: height * 0.3,
-            child: Container(
-              height: height * 0.2,
-              width: width,
-              child: ElevatedButton(
-                onPressed: () => {_follow(context, battery)},
-                child: Text('FINISH?'),
+            top: height * 0.45,
+            left: width * 0.13,
+            child: GestureDetector(
+              onTap: () => {_follow(context, widget.battery)},
+              child: Container(
+                height: height * 0.12,
+                width: width * 0.75,
+                decoration: BoxDecoration(
+                  border: Border.all(width: 3, color: Colors.transparent),
+                  borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                  color: Color(0xFF9378FF).withOpacity(0.8),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.deepPurpleAccent,
+                      spreadRadius: 1,
+                      blurRadius: 5,
+                      offset: Offset(0, 2), // changes position of shadow
+                    ),
+                  ],
+                ),
+                child: Padding(
+                  padding: EdgeInsets.all(20.0),
+                  child: Text(
+                    'You have completed the level!',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'AutourOne',
+                      fontWeight: FontWeight.w400,
+                      fontSize: 18,
+                    ),
+                  ),
+                ),
               ),
             ),
           ),
@@ -472,7 +511,7 @@ class MyStatelessWidget extends StatelessWidget {
       ],
     );
   }
-}
+} //onPressed: () => {_follow(context, widget.battery)},child: Text('You have completed the level!'),
 
 class AnimatedImage extends StatefulWidget {
   const AnimatedImage({Key? key}) : super(key: key);
