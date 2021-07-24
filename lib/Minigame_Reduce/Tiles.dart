@@ -19,15 +19,26 @@ class _TileState extends State<Tile> {
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(20),
-          child: Ink(
-            child: InkWell(
-              onTap: widget.onTap,
-              child: Container(
-                color: widget.color,
+      color: Colors.white10,
+      child: Transform.rotate(
+        angle: 3.1416 / 4,
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Ink(
+              child: InkWell(
+                onTap: widget.onTap,
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                    border: Border.all(
+                      width: 3.0,
+                      style: BorderStyle.solid,
+                    ),
+                    color: widget.color,
+                  ),
+                ),
               ),
             ),
           ),

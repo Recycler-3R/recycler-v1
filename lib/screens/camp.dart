@@ -167,7 +167,7 @@ class MyStatefulWidget extends StatefulWidget {
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
   Widget build(BuildContext context) {
-    final PageController controller = PageController(initialPage: 0);
+    final PageController controller = PageController(initialPage: 4);
     int pageChanged = 0;
     final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
