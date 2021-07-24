@@ -1,9 +1,8 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:recycler/Minigame_Reduce/Tiles.dart';
-import 'package:recycler/screens/home.dart';
+import 'package:recycler/screens/congrats.dart';
 
 // int rand() {
 //   var rand = new Random();
@@ -22,6 +21,7 @@ class _ReduceState extends State<Reduce> {
   var ongoingGame = true;
   int chosenColorActive = 0;
   late Color chosenColorToPop;
+  late Color indicatorColor = colorPool[rand.nextInt(3)];
 
   List<Color> colorPool = [
     Colors.deepPurple,
@@ -52,7 +52,7 @@ class _ReduceState extends State<Reduce> {
   }
 
   setColorPopped(int index) {
-    colorGrid.update(index, (value) => Colors.black);
+    colorGrid.update(index, (value) => Colors.white);
   }
 
   getColorGrid(int index) {
@@ -69,8 +69,9 @@ class _ReduceState extends State<Reduce> {
         checkBoard(board, chosen);
 
         if (!ongoingGame) {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => Home()));
+          //  Navigator.push(
+          //     context, MaterialPageRoute(builder: (context) => Home()));
+          _congrats(context, 'fullbattery.png');
         }
 
         // setState(() {
@@ -83,9 +84,9 @@ class _ReduceState extends State<Reduce> {
   void spawner(int index, Map board, Color chosen) {
     checkBoard(board, chosen);
     setColorPopped(index);
-    Timer.periodic(Duration(milliseconds: 1200), (timer) {
+    Timer.periodic(Duration(milliseconds: 700), (timer) {
       //add loading/growing animation
-      if (getColorGrid(index) == Colors.black) {
+      if (getColorGrid(index) == Colors.white) {
         setState(() {
           setColorGrid(index);
         });
@@ -112,7 +113,7 @@ class _ReduceState extends State<Reduce> {
     for (int i = 0; i < 12; i++) {
       setColorGrid(i);
       //print('Color of Tile[' + i.toString() + ']: ' + getColorGrid(i));
-      startGame(colorGrid, Colors.deepPurple);
+      startGame(colorGrid, indicatorColor);
       // startGame(colorGrid, colorPool[rand.nextInt(3)]);
     }
     super.initState();
@@ -120,12 +121,25 @@ class _ReduceState extends State<Reduce> {
 
   @override
   Widget build(BuildContext context) {
+    final double height = MediaQuery.of(context).size.height;
+    final double width = MediaQuery.of(context).size.width;
+
     return SafeArea(
       child: Container(
-        child: Column(
+        child: Stack(
           children: [
             Expanded(
               child: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: <Color>[
+                        Color(0xFFFFDFF6),
+                        Color(0xFFFFFFFF),
+                        Color(0xFFFFFFFF),
+                      ]),
+                ),
                 child: GridView.builder(
                     itemCount: 12,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -153,6 +167,18 @@ class _ReduceState extends State<Reduce> {
                     }),
               ),
             ),
+            Positioned(
+              left: width * 0.20,
+              bottom: height * 0.10,
+              child: Container(
+                height: height * 0.10,
+                width: width * 0.60,
+                decoration: BoxDecoration(
+                    color: indicatorColor,
+                    border: Border.all(width: 3.0),
+                    borderRadius: BorderRadius.circular(50.0)),
+              ),
+            ),
           ],
         ),
       ),
@@ -160,7 +186,123 @@ class _ReduceState extends State<Reduce> {
   }
 }
 
+void _congrats(context, battery) {
+  Navigator.push(
+    context,
+    PageRouteBuilder(
+        transitionDuration: Duration(milliseconds: 800),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          var curve = Curves.easeInToLinear;
 
+          var curvedAnimation = CurvedAnimation(
+            parent: animation,
+            curve: curve,
+          );
+
+          return FadeTransition(
+            opacity: curvedAnimation,
+            child: child,
+          );
+        },
+        pageBuilder: (context, animation, animationTime) {
+          return CongratsNotif();
+        }),
+  );
+  // showDialog<String>(
+  //     context: context,
+  //     builder: (BuildContext context) => new AlertDialog(
+  //           title: Text(
+  //             "Congratulations!",
+  //             style: TextStyle(
+  //               color: Colors.white,
+  //               fontSize: 20.0,
+  //               fontWeight: FontWeight.bold,
+  //               fontFamily: 'Public Sans',
+  //             ),
+  //           ),
+  //           content: new Container(
+  //             width: 100.0,
+  //             height: 140.0,
+  //             decoration: new BoxDecoration(
+  //               shape: BoxShape.rectangle,
+  //               color: const Color(0xFFFFFF),
+  //               borderRadius: new BorderRadius.all(new Radius.circular(10.0)),
+  //             ),
+  //             child: new Column(
+  //               crossAxisAlignment: CrossAxisAlignment.stretch,
+  //               children: <Widget>[
+  //                 // dialog centre
+  //                 Container(
+  //                   child: Text(
+  //                     "You have finished the minigame: ",
+  //                     style: TextStyle(
+  //                       color: Colors.white,
+  //                       fontSize: 18.0,
+  //                       fontFamily: 'helvetica_neue_light',
+  //                     ),
+  //                   ),
+  //                 ),
+  //                 SizedBox(height: 15),
+  //                 Container(
+  //                   width: 25,
+  //                   child: Text(
+  //                     "Reduce",
+  //                     textAlign: TextAlign.center,
+  //                     style: TextStyle(
+  //                       color: Colors.white,
+  //                       fontSize: 24.0,
+  //                       fontFamily: 'helvetica_neue_light',
+  //                     ),
+  //                   ),
+  //                 ),
+  //                 SizedBox(height: 25),
+  //                 // dialog bottom
+  //                 Container(
+  //                   decoration: new BoxDecoration(
+  //                       color: const Color(0xFF9378FF),
+  //                       borderRadius: BorderRadius.all(Radius.circular(20.0))),
+  //                   child: TextButton(
+  //                     style: TextButton.styleFrom(
+  //                       textStyle: const TextStyle(fontSize: 16),
+  //                     ),
+  //                     onPressed: () => {
+  //                       Navigator.push(
+  //                         context,
+  //                         PageRouteBuilder(
+  //                             transitionDuration: Duration(milliseconds: 1500),
+  //                             transitionsBuilder: (context, animation,
+  //                                 secondaryAnimation, child) {
+  //                               var curve = Curves.easeInToLinear;
+  //                               var curve2 = Curves.easeOut;
+
+  //                               var curvedAnimation = CurvedAnimation(
+  //                                 reverseCurve: curve2,
+  //                                 parent: animation,
+  //                                 curve: curve,
+  //                               );
+
+  //                               return FadeTransition(
+  //                                 opacity: curvedAnimation,
+  //                                 child: child,
+  //                               );
+  //                             },
+  //                             pageBuilder: (context, animation, animationTime) {
+  //                               return CampSite(battery: battery);
+  //                             }),
+  //                       ),
+  //                     },
+  //                     child: const Text(
+  //                       'Back to Map',
+  //                       style: TextStyle(color: Colors.white),
+  //                     ),
+  //                   ),
+  //                 ),
+  //               ],
+  //             ),
+  //           ),
+  //           backgroundColor: Color(0xFF5A40C5),
+  //         ));
+}
 
 
 
