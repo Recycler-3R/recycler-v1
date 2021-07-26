@@ -190,7 +190,7 @@ void _congrats(context, battery) {
   Navigator.push(
     context,
     PageRouteBuilder(
-        transitionDuration: Duration(milliseconds: 800),
+        transitionDuration: Duration(milliseconds: 700),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           var curve = Curves.easeInToLinear;
 

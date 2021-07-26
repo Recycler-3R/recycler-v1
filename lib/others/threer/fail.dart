@@ -12,7 +12,7 @@ class FailR extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String failMessage = resultDialogs['ps_' + finalR + 'wrong'].toString();
+    String failMessage = resultDialogs[item + finalR + '_wrong'].toString();
     final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
     return SafeArea(
@@ -62,7 +62,7 @@ class FailR extends StatelessWidget {
               ),
               Spacer(),
               Container(
-                height: height * 0.35,
+                height: height * 0.45,
                 width: width * 0.8,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(25),

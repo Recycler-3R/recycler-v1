@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recycler/others/dialogs.dart';
 import 'package:recycler/others/threer/rslidebutton.dart';
 
 class ThreeR extends StatefulWidget {
@@ -20,6 +21,9 @@ class _ThreeRState extends State<ThreeR> {
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
+    final isSuccessReduce = resultSuccess[widget.item + "_reduce"].toString();
+    final isSuccessReuse = resultSuccess[widget.item + "_reduse"].toString();
+    final isSuccessRecycle = resultSuccess[widget.item + "_recycle"].toString();
 
     return Scaffold(
       body: SafeArea(
@@ -96,19 +100,19 @@ class _ThreeRState extends State<ThreeR> {
                 RSlideButton(
                   item: widget.item,
                   buttonName: 'educe',
-                  isSuccess: true,
+                  isSuccess: isSuccessReduce,
                 ),
                 Spacer(),
                 RSlideButton(
                   item: widget.item,
                   buttonName: 'euse',
-                  isSuccess: false,
+                  isSuccess: isSuccessReuse,
                 ),
                 Spacer(),
                 RSlideButton(
                   item: widget.item,
                   buttonName: 'ecycle',
-                  isSuccess: false,
+                  isSuccess: isSuccessRecycle,
                 ),
                 Spacer(),
               ],

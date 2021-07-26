@@ -13,41 +13,15 @@ class _InputNameState extends State<InputName> {
     final double width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Stack(children: [
-        Transform.rotate(
-          angle: 3.1416 / 4,
-          child: Positioned(
-            top: height * 0.5,
-            child: Container(
-              height: height * 0.5,
-              width: width * 0.5,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage("images/robot.png"),
-                    fit: BoxFit.fitWidth,
-                    alignment: Alignment.center),
-              ),
-            ),
-          ),
-        ),
         Container(
           height: height,
           width: width,
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
-              colors: [
-                Color(0xFFFBC2EB),
-                Color(0xFFA6C1EE),
-              ],
-            ),
+            image: DecorationImage(
+                image: AssetImage("images/backgrounds/2ndpoint.png"),
+                fit: BoxFit.fitWidth,
+                alignment: Alignment.center),
           ),
-          // decoration: BoxDecoration(
-          //   image: DecorationImage(
-          //       image: AssetImage("images/backgrounds/2ndpoint.png"),
-          //       fit: BoxFit.fitWidth,
-          //       alignment: Alignment.center),
-          // ),
           child: Scaffold(
             backgroundColor: Colors.transparent,
             body: SizedBox(

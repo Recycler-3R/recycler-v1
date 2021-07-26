@@ -5,7 +5,7 @@ import 'package:recycler/others/threer/success.dart';
 class RSlideButton extends StatefulWidget {
   final String buttonName;
   final item;
-  final bool isSuccess;
+  final String isSuccess;
   RSlideButton({
     Key? key,
     required this.item,
@@ -150,13 +150,15 @@ class _RSlideButtonState extends State<RSlideButton> {
             child: GestureDetector(
               onHorizontalDragStart: (DragStartDetails details) {
                 setState(() {
-                  _color = widget.isSuccess ? Colors.green : Colors.redAccent;
-                  _vcolor = widget.isSuccess
+                  _color = (widget.isSuccess == 'true')
+                      ? Colors.green
+                      : Colors.redAccent;
+                  _vcolor = (widget.isSuccess == 'true')
                       ? Colors.greenAccent.shade400
                       : Colors.redAccent.shade400;
                   _swipe = 130;
                   delayButton();
-                  delayScreen(widget.isSuccess);
+                  delayScreen(widget.isSuccess == 'true');
                 });
               },
               child: AnimatedContainer(

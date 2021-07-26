@@ -10,6 +10,7 @@ class GlobalData {
     _heart = 5;
   }
 
+  bool firstvisit = true;
   int _battery = 0;
   int _heart = 0;
 
@@ -18,10 +19,21 @@ class GlobalData {
   int get getheart => _heart;
 
   //short setter for my variable
-
+  //void set
   void setheart() => _heart = 5;
   void setbattery() => _battery = 3;
 
   void decrementBattery() => _battery--;
   void decrementHeart() => _heart--;
 }
+
+/*
+  Flow Final Demo:
+  
+
+To do:
+  1. Place robot sa input screen.
+  2. Intro sa camp make short instructions
+  3. Initial page make robot appear only for first visit
+  4. 
+ */

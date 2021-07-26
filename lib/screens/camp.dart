@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recycler/others/botnavbar.dart';
+import 'package:recycler/others/dialogs.dart';
+import 'package:recycler/others/roulette.dart';
 import 'package:recycler/others/sitepage1.dart';
 import 'package:recycler/screens/beach.dart';
 import 'package:recycler/screens/threer.dart';
@@ -167,7 +169,7 @@ class MyStatefulWidget extends StatefulWidget {
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
   Widget build(BuildContext context) {
-    final PageController controller = PageController(initialPage: 4);
+    final PageController controller = PageController(initialPage: 1);
     int pageChanged = 0;
     final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
@@ -474,7 +476,12 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             top: height * 0.45,
             left: width * 0.13,
             child: GestureDetector(
-              onTap: () => {_follow(context, widget.battery)},
+              onTap: () => {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Roulette()),
+                )
+              },
               child: Container(
                 height: height * 0.12,
                 width: width * 0.75,
@@ -513,6 +520,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   }
 } //onPressed: () => {_follow(context, widget.battery)},child: Text('You have completed the level!'),
 
+//_follow(context, widget.battery)
 class AnimatedImage extends StatefulWidget {
   const AnimatedImage({Key? key}) : super(key: key);
 
@@ -543,6 +551,8 @@ class _AnimatedImageState extends State<AnimatedImage>
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
+    int index = 0;
+    String message = robotDialog[index];
 
     return Stack(
       children: [
@@ -566,7 +576,8 @@ class _AnimatedImageState extends State<AnimatedImage>
             onTap: () {
               setState(() {
                 padding = EdgeInsets.all(18.0);
-                message = 'Time to start cleaning up!';
+                index += 1;
+                message = robotDialog[index];
               });
             },
             child: Stack(

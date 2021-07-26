@@ -34,13 +34,11 @@ class _CongratsNotifState extends State<CongratsNotif> {
             Navigator.push(
               context,
               PageRouteBuilder(
-                  transitionDuration: Duration(milliseconds: 700),
+                  transitionDuration: Duration(milliseconds: 600),
                   transitionsBuilder:
                       (context, animation, animationTime, child) {
                     animation = CurvedAnimation(
-                        reverseCurve: Curves.easeOut,
-                        parent: animation,
-                        curve: Curves.easeInToLinear);
+                        parent: animation, curve: Curves.easeInOut);
                     return FadeTransition(
                       opacity: animation,
                       child: child,
@@ -51,17 +49,7 @@ class _CongratsNotifState extends State<CongratsNotif> {
                   }),
             );
           },
-          child: AnimatedImage(
-              // child: Text(
-              //   'NICE!',
-              //   style: TextStyle(
-              //     fontFamily: 'AutourOne',
-              //     fontSize: 72,
-              //     color: Colors.black,
-              //     decoration: TextDecoration.none,
-              //   ),
-              // ),
-              ),
+          child: AnimatedImage(),
         ),
       ),
     );
@@ -84,7 +72,7 @@ class _AnimatedImageState extends State<AnimatedImage>
   late Animation<Offset> _animation = Tween(
     begin: Offset.zero,
     end: Offset(0.0, -0.01),
-  ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+  ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeIn));
   var padding = EdgeInsets.all(28.0);
   String message = 'GOOD JOB!';
 
@@ -117,72 +105,45 @@ class _AnimatedImageState extends State<AnimatedImage>
         ),
         SlideTransition(
           position: _animation,
-          child: InkWell(
-            onTap: () {
-              setState(() {
-                padding = EdgeInsets.all(40.0);
-                message = 'KEEP IT UP!';
-              });
-            },
-            onDoubleTap: () {
-              Navigator.push(
-                context,
-                PageRouteBuilder(
-                    transitionDuration: Duration(milliseconds: 500),
-                    transitionsBuilder:
-                        (context, animation, animationTime, child) {
-                      animation = CurvedAnimation(
-                          parent: animation, curve: Curves.easeIn);
-                      return FadeTransition(
-                        opacity: animation,
-                        child: child,
-                      );
-                    },
-                    pageBuilder: (context, animation, animationTime) {
-                      return CampSite(battery: 'fullbattery.png');
-                    }),
-              );
-            },
-            child: Stack(
-              children: [
-                Positioned(
-                  top: height * 0.22,
-                  left: width * 0.1,
-                  child: Container(
-                    height: height * 0.20,
-                    width: width * 0.8,
-                    decoration: BoxDecoration(
-                      border: Border.all(width: 3, color: Colors.transparent),
-                      borderRadius: BorderRadius.all(Radius.circular(30.0)),
-                      color: Color(0xFF9378FF).withOpacity(0.8),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.deepPurpleAccent,
-                          spreadRadius: 1,
-                          blurRadius: 5,
-                          offset: Offset(0, 2), // changes position of shadow
-                        ),
-                      ],
-                    ),
-                    child: Padding(
-                      padding: padding,
-                      child: Center(
-                        child: Text(
-                          message,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: 'AutourOne',
-                            fontWeight: FontWeight.w400,
-                            fontSize: 32,
-                          ),
+          child: Stack(
+            children: [
+              Positioned(
+                top: height * 0.22,
+                left: width * 0.1,
+                child: Container(
+                  height: height * 0.20,
+                  width: width * 0.8,
+                  decoration: BoxDecoration(
+                    border: Border.all(width: 3, color: Colors.transparent),
+                    borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                    color: Color(0xFF9378FF).withOpacity(0.8),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.deepPurpleAccent,
+                        spreadRadius: 1,
+                        blurRadius: 5,
+                        offset: Offset(0, 2), // changes position of shadow
+                      ),
+                    ],
+                  ),
+                  child: Padding(
+                    padding: padding,
+                    child: Center(
+                      child: Text(
+                        message,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: 'AutourOne',
+                          fontWeight: FontWeight.w400,
+                          fontSize: 32,
                         ),
                       ),
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ],
