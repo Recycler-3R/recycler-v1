@@ -8,18 +8,29 @@ class GlobalData {
   GlobalData._internal() {
     _battery = 3;
     _heart = 5;
+    _firstvisit = true;
+    _itemfinished = false;
+    _levelfinished = false;
   }
 
-  bool firstvisit = true;
+  bool _firstvisit = true;
+  bool _itemfinished = false;
+  bool _levelfinished = false;
   int _battery = 0;
   int _heart = 0;
 
   //short getter for my variable
   int get getbattery => _battery;
   int get getheart => _heart;
+  bool get getvisit => _firstvisit;
+  bool get getitemfinish => _itemfinished;
+  bool get getlevelfinish => _levelfinished;
 
   //short setter for my variable
   //void set
+  void firstVisitDone() => _firstvisit = false;
+  void setitemFinished() => _itemfinished = true;
+  void setlevelFinished() => _levelfinished = true;
   void setheart() => _heart = 5;
   void setbattery() => _battery = 3;
 

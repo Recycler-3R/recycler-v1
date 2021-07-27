@@ -192,7 +192,7 @@ void _congrats(context, battery) {
     PageRouteBuilder(
         transitionDuration: Duration(milliseconds: 700),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
-          var curve = Curves.easeInToLinear;
+          var curve = Curves.linear;
 
           var curvedAnimation = CurvedAnimation(
             parent: animation,

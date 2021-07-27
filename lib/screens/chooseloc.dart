@@ -186,7 +186,10 @@ class _ChooseLocationState extends State<ChooseLocation> {
                 onTap: () {
                   _chooseloc(
                     context,
-                    CampSite(battery: battery),
+                    CampSite(
+                      battery: battery,
+                      globaldata: _globalData,
+                    ),
                     Alignment.topCenter,
                   );
                   setBat(decrementBat);
@@ -206,7 +209,10 @@ class _ChooseLocationState extends State<ChooseLocation> {
 
                   setBat(decrementBat);
                 },
-                child: Image.asset('images/Beach_Icon.png'),
+                child: Opacity(
+                  opacity: _globalData.getlevelfinish ? 1 : 0.5,
+                  child: Image.asset('images/Beach_Icon.png'),
+                ),
               ),
               SizedBox(height: height * 0.02),
               GestureDetector(
@@ -221,7 +227,10 @@ class _ChooseLocationState extends State<ChooseLocation> {
 
                   setBat(decrementBat);
                 },
-                child: Image.asset('images/School_Icon.png'),
+                child: Opacity(
+                  opacity: 0.5,
+                  child: Image.asset('images/School_Icon.png'),
+                ),
               ),
               Spacer(),
             ],

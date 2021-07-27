@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recycler/others/botnavbar.dart';
 import 'package:recycler/others/dialogs.dart';
+import 'package:recycler/others/globaldata.dart';
 import 'package:recycler/others/roulette.dart';
 import 'package:recycler/others/sitepage1.dart';
 import 'package:recycler/screens/beach.dart';
@@ -108,10 +109,11 @@ class CampSite extends StatefulWidget {
   CampSite({
     Key? key,
     required this.battery,
+    required this.globaldata,
   }) : super(key: key);
 
   String battery;
-
+  GlobalData globaldata;
   @override
   _CampSiteState createState() => _CampSiteState();
 }
@@ -152,6 +154,7 @@ class _CampSiteState extends State<CampSite> {
       extendBodyBehindAppBar: true,
       body: MyStatefulWidget(
         battery: widget.battery,
+        globaldata: widget.globaldata,
       ),
       bottomNavigationBar: BottomNavbar(battery: widget.battery),
     );
@@ -159,9 +162,13 @@ class _CampSiteState extends State<CampSite> {
 }
 
 class MyStatefulWidget extends StatefulWidget {
-  MyStatefulWidget({Key? key, required this.battery}) : super(key: key);
+  MyStatefulWidget({
+    Key? key,
+    required this.battery,
+    required this.globaldata,
+  }) : super(key: key);
+  GlobalData globaldata;
   String battery;
-
   @override
   _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
 }
@@ -169,7 +176,9 @@ class MyStatefulWidget extends StatefulWidget {
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
   Widget build(BuildContext context) {
-    final PageController controller = PageController(initialPage: 1);
+    final PageController controller =
+        PageController(initialPage: widget.globaldata.getvisit ? 0 : 1);
+    widget.globaldata.firstVisitDone();
     int pageChanged = 0;
     final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
@@ -476,11 +485,12 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             top: height * 0.45,
             left: width * 0.13,
             child: GestureDetector(
-              onTap: () => {
+              onTap: () {
+                widget.globaldata.setlevelFinished();
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => Roulette()),
-                )
+                );
               },
               child: Container(
                 height: height * 0.12,
@@ -538,8 +548,9 @@ class _AnimatedImageState extends State<AnimatedImage>
     begin: Offset.zero,
     end: Offset(0.0, -0.01),
   ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
-  var padding = EdgeInsets.all(28.0);
-  String message = 'Hi there, Recycler!';
+  var padding = EdgeInsets.all(18.0);
+  int index = 0;
+  String message = robotDialog[0];
 
   @override
   void dispose() {
@@ -551,8 +562,12 @@ class _AnimatedImageState extends State<AnimatedImage>
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
-    int index = 0;
-    String message = robotDialog[index];
+
+    String _setMessage() {
+      index == 3 ? index = 0 : index++;
+      print('Index is ' + index.toString());
+      return robotDialog[index];
+    }
 
     return Stack(
       children: [
@@ -572,12 +587,11 @@ class _AnimatedImageState extends State<AnimatedImage>
         ),
         SlideTransition(
           position: _animation,
-          child: InkWell(
+          child: GestureDetector(
             onTap: () {
+              //print(_setMessage());
               setState(() {
-                padding = EdgeInsets.all(18.0);
-                index += 1;
-                message = robotDialog[index];
+                message = _setMessage();
               });
             },
             child: Stack(
@@ -601,16 +615,18 @@ class _AnimatedImageState extends State<AnimatedImage>
                         ),
                       ],
                     ),
-                    child: Padding(
-                      padding: padding,
-                      child: Text(
-                        message,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontFamily: 'AutourOne',
-                          fontWeight: FontWeight.w400,
-                          fontSize: 18,
+                    child: Center(
+                      child: Padding(
+                        padding: padding,
+                        child: Text(
+                          message,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'AutourOne',
+                            fontWeight: FontWeight.w400,
+                            fontSize: 18,
+                          ),
                         ),
                       ),
                     ),
